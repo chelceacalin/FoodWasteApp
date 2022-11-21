@@ -1,0 +1,9 @@
+Planul de lucru actual: TODOS
+- creare modele pentru orm
+- creare endpoints pentru api 
+- alegere baze de date 
+- gandire relatii intre obiectele cu care orm va functiona
+- gandire flux aplicatie
+- gandire parte de front-end: cum vor arata componentele
+- cum vom conecta frontend cu backend
+- stabilire logica aplicatie si functionalitati necesare
