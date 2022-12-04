@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db";
+const sequelize = require("../db/index");
+const { DataTypes } = require("sequelize");
 
-const Quantity = sequelize.define('Quantities', {
+const Quantity = sequelize.define('quantities', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -17,4 +17,4 @@ const Quantity = sequelize.define('Quantities', {
     }
 })
 
-export default Quantity;
+module.exports = Quantity;

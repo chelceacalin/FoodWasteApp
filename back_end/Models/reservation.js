@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db";
+const sequelize = require("../db/index");
+const { DataTypes } = require("sequelize");
 
-const Reservation = sequelize.define("Reservations", {
+const Reservation = sequelize.define("reservations", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -21,4 +21,4 @@ const Reservation = sequelize.define("Reservations", {
     }
 })
 
-export default Reservation;
+module.exports = Reservation;

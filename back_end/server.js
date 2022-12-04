@@ -1,16 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-
+const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = 3000;
 
+
+//Middleware 
 var corsOptions = {
     origin: 'http//localhost:8081'
 }
-
-app.use(cors(corsOptions))
+let port = 3030;
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const router = require('./routes/productRoutes');
+app.use('/api/products', router);
+
 
 app.listen(port, () => {
     console.log('Started on port:' + port);
