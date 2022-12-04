@@ -1,3 +1,5 @@
+# ignoring config file
+./back_end/db/config.js
 # Logs
 logs
 *.log
