@@ -1,35 +1,16 @@
 import express from 'express';
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import cors from 'cors';
+
 const app = express();
 const port = 3000;
-const sequelize = new Sequelize(
-    'fortw',
-    'forTW',
-    '1234abc!',
-    {
-        host: 'localhost',
-        dialect: 'mysql'
-    }
-);
 
-const User = sequelize.define('Users', {
-    username: DataTypes.STRING,
-    name: DataTypes.DATE
-})
+var corsOptions = {
+    origin: 'http//localhost:8081'
+}
 
-sequelize.sync().then(async function () {
-    console.log('Everything is synced')
-});
-
-sequelize.authenticate().then(() => {
-    console.log('Conn established');
-}).catch((err) => {
-    console.log('Unable to connect to database:', err);
-})
-
-app.get('/api', (req, res) => {
-    res.send('Created');
-})
+app.use(cors(corsOptions))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
     console.log('Started on port:' + port);
