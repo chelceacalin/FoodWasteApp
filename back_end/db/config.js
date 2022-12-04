@@ -1,9 +1,9 @@
 let config = {
     HOST: 'localhost',
-    USER: 'route',
-    PASSWORD: 'mihai333',
-    DB: 'dbo',
+    USER: 'root',
+    PASSWORD: 'mustarel2002',
+    DB: 'calin',
     dialect: 'mysql'
 };
 
-export default config;
+module.exports = config;
