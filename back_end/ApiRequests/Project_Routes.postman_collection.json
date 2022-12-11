@@ -1,0 +1,621 @@
+{
+    "info": {
+        "_postman_id": "15314232-38e3-4769-a08f-83e1f213383a",
+        "name": "Project_Routes",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "16932928"
+    },
+    "item": [{
+            "name": "Product_Routes",
+            "item": [{
+                    "name": "AddProduct",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/products/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GetAllProducts",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/products",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DeleteProductByID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/products/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GetProductByID",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/products/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Products",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/products",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "UpdateProductByID",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\": 69\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/products/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "User_Routes",
+            "item": [{
+                    "name": "AddUser",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":\"1\",\r\n    \"email\":\"calin@yahoo.com\",\r\n    \"username\":\"Calin\",\r\n    \"photoUrl\":\"empty\",\r\n    \"address\":\"Pantelimon Clementina\",\r\n    \"phone\":\"079659212\"\r\n\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/users/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "users",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GetAllUsers",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/users",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DeleteUserByID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/users/2",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "users",
+                                "2"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GetUSerByID",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/users/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "users",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Users",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/users",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User By ID",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\": 69\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/products/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "products",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Reservation_Routes",
+            "item": [{
+                    "name": "Add Reservation",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"receiverId\":\"idreceived\",\r\n    \"productId\":1,\r\n    \"date\":\"2022-10-10\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Reservations",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Reservation By ID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Reservation By ID",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Reservations",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Reservation By ID",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\": 69\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Quantity_Routes",
+            "item": [{
+                    "name": "Add Quantity",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"type\":\"kilogram\",\r\n    \"units\":100\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Quantities",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Quantity By ID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Quantity By ID",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Quantities",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Quantity By ID",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\": 69\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/quantities/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "quantities",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
