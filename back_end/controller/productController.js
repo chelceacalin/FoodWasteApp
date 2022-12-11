@@ -79,20 +79,12 @@ const deleteall = async(req, res) => {
         res.status(500).send({ message: 'Eroare' });
     }
 }
-
 module.exports = {
-
 
     addProduct,
     getAllProducts,
-    updateProduct,
     getSingleProduct,
     deleteProductById,
-    deleteall
-};
-
-module.exports = {
-
-
-    addProduct
+    deleteall,
+    updateProduct
 };
