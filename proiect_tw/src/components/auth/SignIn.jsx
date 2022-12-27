@@ -11,23 +11,33 @@ const SignIn = () => {
             e.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
     //console.log("User credentials: " + userCredential);
-    console.log("User id: " + userCredential['user']);
+ 
     // create user id
   
-            }).catch((err)=>{console.log("Error: " + err)});
+            }).catch((err)=>{
+              if(password.length<=6){
+                  alert("Password must be at least 6 characters");
+              }
+              console.log("Error: " + err)
+            
+            });
     }
 
   return (
     <div className="login-box">
        <h2>Login</h2>
         <form onSubmit={signIn}>
-        <div className="user-box">
-      <input type="email" placeholder="Enter email" value={email}
-            onChange={(e)=>{setEmail(e.target.value)}}
-            ></input>
-      <label>Username</label>
+      
 
+      
+    <div className="user-box">
+    <input type="text" placeholder="Enter your email" value={email}
+              onChange={(e)=>{setEmail(e.target.value)}}
+            ></input>
+      <label>Email</label>
     </div>
+
+
     <div className="user-box">
     <input type="password" placeholder="Enter your password" value={password}
               onChange={(e)=>{setPassword(e.target.value)}}
@@ -37,7 +47,11 @@ const SignIn = () => {
 
 
     <div className="user-box">
-         <a id="CreateAccount" href="#" >Create an account </a>
+         <a id="CreateAccount" href="/signUp" >Create an account </a>
+    </div>
+
+    <div className="user-box">
+         <a id="CreateAccount" href="/forgotPassword" >Forgot Password </a>
     </div>
 
 

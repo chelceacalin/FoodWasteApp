@@ -164,5 +164,39 @@ html {
 
 #CreateAccount {
     all: unset;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #54b3d6;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+#CreateAccount:hover {
+    box-shadow: inset 150px 0 0 0 #54b3d6;
     color: white;
+    cursor: pointer;
+}
+
+#textColorForLoginCreate {
+    color: white;
+    margin-bottom: 50px;
+}
+
+#alreadyHaveAccount {
+    all: unset;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #54b3d6;
+    margin: 0 20%;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+#alreadyHaveAccount:hover {
+    box-shadow: inset 200px 0 0 0 #54b3d6;
+    color: white;
+    cursor: pointer;
+}
+
+a {
+    margin-left: 30%;
 }
