@@ -7,8 +7,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <SignIn/>
-        <SignUp/>
-        <AuthDetails/>
+       {/* <SignUp/>
+        <AuthDetails/> */}
       </header>
     </div>
   );
