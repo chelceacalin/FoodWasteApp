@@ -28,50 +28,10 @@ const SignUp = () => {
 
     axios.post(addRecordEndpoint, accountUser)
       .then(function (response) {
-        console.log(response);
+        alert("Account Created");
       })
       .catch(function (error) {
-        console.log(error);
       });
-
-    //   const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: {
-    //       "id":"10",
-    //       "email":"calin@yahoo.com",
-    //       "username":"Calin",
-    //       "photoUrl":"empty",
-    //       "address":"Pantelimon Clementina",
-    //       "phone":"079659212"
-
-    //   }
-    // };
-
-
-
-    // fetch('http://localhost:3030/api/users/')
-    // .then(res => res.json())
-    // .then((rows) => {
-    //   alert("Suceces "+rows.id);
-    // }).catch((err) => {alert("Eroare")});
-
-    // fetch('localhost:3030/api/users/', requestOptions)
-    //     .then(response => response.json())
-    //     .then(data =>{console.log(data)});
-
-    //axios.post(addRecordEndpoint,  accountUser );
-
-    // axios({
-    //   url: "http://localhost:3030/api/users/",
-    //   method: "POST",
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-    //   },
-    //   data: accountUser
-    // }) .then((res) => { alert(' Account Created! ') })
-    //   .catch((err) => { alert('There has been an error.') });
 
   }
 
