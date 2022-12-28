@@ -39,7 +39,6 @@ const getSingleProduct = async(req, res) => {
                 id: req.params.id
             }
         })
-
         res.status(200).send(prod);
 
     } catch (err) {

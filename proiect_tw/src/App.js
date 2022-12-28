@@ -13,23 +13,10 @@ function App() {
           <Routes>
             <Route exact path="/signUp" element={
               <>
-                {<SignUp />
-       /*
-        <AuthDetails/> */}
+                {<SignUp />}
               </>
             }>
             </Route>
-
-            <Route exact path="/forgotPassword" element={
-              <>
-                {<ForgotPassword />
-       /*
-        <AuthDetails/> */}
-              </>
-            }>
-            </Route>
-
-
             <Route exact path='/forgotPassword' element={<ForgotPassword />}></Route>
             <Route exact path='/authenticated' element={<AuthDetails />}></Route>
             <Route path='/' element={<SignIn />}>Index route</Route>
