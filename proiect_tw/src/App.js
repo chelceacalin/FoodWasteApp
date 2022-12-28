@@ -1,7 +1,7 @@
 import "./App.css";
 import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
-import AuthDetails from "./components/auth/AuthDetails";
+import AuthDetails from "./components/main_page/AuthDetails";
 import ForgotPassword from "./components/auth/ForgotPassword.jsx"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
