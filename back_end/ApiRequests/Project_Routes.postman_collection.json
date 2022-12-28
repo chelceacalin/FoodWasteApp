@@ -616,6 +616,71 @@
                     "response": []
                 }
             ]
+        },
+        {
+            "name": "newUserSub",
+            "item": [{
+                    "name": "Add New User Sub",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n   \"sub\":\"IGhXQeEXACXWBG6llspJD7Sf9Jj1\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/newUserSub/",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "newUserSub",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Sub",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/newUserSub/IGhXQeEXACXWBG6llspJD7Sf9Jj1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "newUserSub",
+                                "IGhXQeEXACXWBG6llspJD7Sf9Jj1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
         }
     ]
 }
