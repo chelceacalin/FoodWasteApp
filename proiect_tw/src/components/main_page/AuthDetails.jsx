@@ -12,12 +12,10 @@ const AuthDetails = () => {
     useEffect(() => {
       const listen = onAuthStateChanged(auth, (user) => {
         if (user) {
-
           if (user) {
           setAuthUser(user);
-            console.log("Logat: " +user);  
-            const uid = user.uid;
-        
+           // console.log("Logat: " +user);  
+            //console.log(user);
         
           }
 
