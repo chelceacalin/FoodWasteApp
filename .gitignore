@@ -131,4 +131,3 @@ dist
 .yarn/install-state.gz
 .pnp.*
 back_end/db/config.js
-back_end/db/config.js
