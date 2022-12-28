@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../../firebase.js'
-
+import { useNavigate } from 'react-router-dom';
 const SignIn = () => {
-
+  const navigate = useNavigate();
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
 
@@ -12,7 +12,7 @@ const SignIn = () => {
             e.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
            
-           
+              navigate('../authenticated', { replace: true });
             }).catch((err)=>{
               if(password.length<=6){
                   alert("Password must be at least 6 characters");

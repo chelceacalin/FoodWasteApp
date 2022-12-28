@@ -44,7 +44,7 @@ const SignUp = () => {
       .then((userCredential) => {
         InsertUserIntoDb(userCredential.user.uid, email, username, address, phone);
         console.log(userCredential.user.uid);
-        navigate('../', { replace: true })
+        navigate('../authenticated', { replace: true })
       }).then(() => {
       })
       .catch((error) => {
