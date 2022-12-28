@@ -10,9 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
      <Router>
-
      <Routes>
-
      <Route exact path="/signUp" element={
       <> 
        { <SignUp/>
@@ -21,7 +19,7 @@ function App() {
        </>
      }>
   </Route>
-  
+
   <Route exact path="/forgotPassword" element={
       <> 
        { <ForgotPassword/>
@@ -31,8 +29,7 @@ function App() {
      }>
   </Route>
 
-  
-  
+
   <Route exact path='/forgotPassword' element={<ForgotPassword/>}></Route>
 
      <Route path='/' element={<SignIn/>}>Index route</Route>

@@ -2,18 +2,17 @@ import { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../../firebase.js'
 
-
 const SignIn = () => {
 
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+
+
     const signIn=(e)=>{
             e.preventDefault();
             signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
-    //console.log("User credentials: " + userCredential);
- 
-    // create user id
-  
+           
+           
             }).catch((err)=>{
               if(password.length<=6){
                   alert("Password must be at least 6 characters");
@@ -27,8 +26,6 @@ const SignIn = () => {
     <div className="login-box">
        <h2>Login</h2>
         <form onSubmit={signIn}>
-      
-
       
     <div className="user-box">
     <input type="text" placeholder="Enter your email" value={email}
@@ -45,7 +42,6 @@ const SignIn = () => {
       <label>Password</label>
     </div>
 
-
     <div className="user-box">
          <a id="CreateAccount" href="/signUp" >Create an account </a>
     </div>
@@ -53,7 +49,6 @@ const SignIn = () => {
     <div className="user-box">
          <a id="CreateAccount" href="/forgotPassword" >Forgot Password </a>
     </div>
-
 
     <a href="#" onClick={signIn}>
          Submit
