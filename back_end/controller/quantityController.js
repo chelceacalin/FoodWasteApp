@@ -68,7 +68,7 @@ const deleteallQuantities = async(req, res) => {
         await Quantity.destroy({ where: {}, truncate: true });
         res.status(200).send({ message: "Table Cleared" });
     } catch (err) {
-        res.status(500).send({ message: 'Eroare' });
+        res.status(500).send({ message: 'Eroare:' + err });
     }
 }
 module.exports = {

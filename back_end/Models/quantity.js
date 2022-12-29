@@ -1,8 +1,7 @@
-const sequelize = require("../db/index");
 const { DataTypes } = require("sequelize");
-
-const Quantity = sequelize.define('quantities', {
-    id: {
+const sequelize = require('../db/index')
+const Quantity = sequelize.define('Quantities', {
+    qty_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -15,6 +14,9 @@ const Quantity = sequelize.define('quantities', {
     units: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    identificator: {
+        type: DataTypes.UUID
     }
 })
 

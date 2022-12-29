@@ -4,8 +4,8 @@ const { DataTypes } = require("sequelize");
 const Product = sequelize.define("products", {
     id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     idUser: {
         type: DataTypes.STRING,
@@ -34,8 +34,8 @@ const Product = sequelize.define("products", {
     category: {
         type: DataTypes.STRING
     },
-    quantityId: {
-        type: DataTypes.INTEGER
+    quantity_id: {
+        type: DataTypes.UUID
     }
 })
 
