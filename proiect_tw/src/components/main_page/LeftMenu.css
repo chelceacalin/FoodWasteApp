@@ -1,0 +1,57 @@
+.leftMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.leftMenu p {
+    font-family: Poppins;
+    font-weight: bold;
+    color: white;
+}
+
+.leftMenu hr {
+    width: 100%;
+}
+
+.leftMenuProfile {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftMenuProfile img {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.leftMenuProfile img:hover {
+    box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.leftMenuFilter {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.leftMenu button {
+    width: 120px;
+    margin-bottom: 1em;
+    border-radius: 1em;
+    border-style: none;
+    transition: 0.2s;
+}
+
+.leftMenu button:hover {
+    box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transform: scale(1.1);
+}

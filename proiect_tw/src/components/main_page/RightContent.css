@@ -1,0 +1,31 @@
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    bottom: 0;
+    background-color: white;
+    flex-grow: 1;
+}
+
+.rightContentMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+    padding: 1em;
+}
+
+.rightContentMenu button {
+    margin-right: 2em;
+    border-radius: 1em;
+    border-style: none;
+    transition: 0.2s;
+    padding: 0.5em;
+}
+
+.rightContentMenu button:hover {
+    box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transform: scale(1.1);
+}
