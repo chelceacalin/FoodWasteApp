@@ -14,7 +14,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "raw": "    {\r\n        \"idUser\":1,\r\n        \"address\":\"Closca Nr 2\",\r\n        \"photoURL\":\"empty\",\r\n        \"description\":\"empty\",\r\n        \"forTrade\":false,\r\n        \"expDate\":null,\r\n        \"status\":1,\r\n        \"category\":\"mere\"\r\n    }",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -245,7 +245,7 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:3030/api/users/1",
+                            "raw": "localhost:3030/api/users/AiU8o05fqEUckbcl3pbTuM6i4P82",
                             "host": [
                                 "localhost"
                             ],
@@ -253,7 +253,7 @@
                             "path": [
                                 "api",
                                 "users",
-                                "1"
+                                "AiU8o05fqEUckbcl3pbTuM6i4P82"
                             ]
                         }
                     },
@@ -472,7 +472,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"id\":1,\r\n    \"type\":\"kilogram\",\r\n    \"units\":100\r\n}",
+                            "raw": "{\r\n    \"type\":\"kilogram\",\r\n    \"units\":100\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
