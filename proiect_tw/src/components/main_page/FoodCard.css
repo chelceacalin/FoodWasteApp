@@ -32,6 +32,10 @@
     font-size: small;
 }
 
+.foodCard .textContent {
+    margin: 0;
+}
+
 .foodCard img {
     height: 120px;
     width: 170px;
@@ -47,6 +51,7 @@
     transition: 0.2s;
     height: 1.5em;
     margin-bottom: 1em;
+    margin-top: 0.5em;
 }
 
 .foodCard button:hover {
