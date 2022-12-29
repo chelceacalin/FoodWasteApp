@@ -3,6 +3,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from '../../firebase.js'
 import { useNavigate } from 'react-router-dom';
 import './RightContent.css'
+import FoodCard from "./FoodCard.jsx";
 const RightContent = () => {
     return (
         <div className="rightContent">
@@ -12,7 +13,14 @@ const RightContent = () => {
                 <button> Produse rezervate</button>
             </div>
             <div className="rightContentInfo">
-                Momentan nimic
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
+                <FoodCard />
             </div>
         </div>
     )

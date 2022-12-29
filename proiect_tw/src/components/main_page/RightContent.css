@@ -1,7 +1,7 @@
 .rightContent {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     bottom: 0;
     background-color: white;
     flex-grow: 1;
@@ -18,7 +18,7 @@
 
 .rightContentMenu button {
     margin-right: 2em;
-    border-radius: 1em;
+    border-radius: 0.5em;
     border-style: none;
     transition: 0.2s;
     padding: 0.5em;
@@ -28,4 +28,11 @@
     box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transform: scale(1.1);
+}
+
+.rightContentInfo {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: left;
 }
