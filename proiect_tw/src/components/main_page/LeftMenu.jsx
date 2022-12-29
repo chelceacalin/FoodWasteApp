@@ -10,7 +10,7 @@ const LeftMenu = (props) => {
                 <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
                 <p>Welcome, NAME</p>
                 <button className="button-35">Edit profile</button>
-                <button className="button-35">Add product</button>
+                <button className="button-35" onClick={props.addProduct}>Add product</button>
             </div>
             <hr />
             <div className="leftMenuFilter">

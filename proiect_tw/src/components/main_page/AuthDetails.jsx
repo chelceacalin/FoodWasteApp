@@ -39,14 +39,22 @@ const AuthDetails = () => {
       .catch((error) => console.log(error));
   };
 
+  const navToAddProduct = () => {
+    navigate('../', { replace: true })
+  }
+
+  const navToProduseleMele=()=>{
+
+  }
+
   return (
     <div className="mainPageContainer">
       {authUser ? (
         <>
           {/* <p>{`Signed In as ${authUser.email}`}</p>
           <button onClick={userSignOut}>Sign Out</button> */}
-          <LeftMenu handleSignOut={userSignOut} />
-          <RightContent />
+          <LeftMenu handleSignOut={userSignOut} addProduct={navToAddProduct}   />
+          <RightContent toateprodusele={()=>{  navigate('../authenticated', { replace: true })}}  navToProduseleMele={navToProduseleMele}  />
         </>
       ) : (
         <p>Signed Out</p>
