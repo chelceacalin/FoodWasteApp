@@ -6,6 +6,7 @@ import LeftMenu from "./LeftMenu.jsx";
 import "./AuthDetails.css"
 import RightContent from "./RightContent.jsx";
 
+
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const AuthDetails = () => {
   };
 
   const navToAddProduct = () => {
-    navigate('../', { replace: true })
+    navigate('../addProduct ', { replace: true })
   }
 
   const navToProduseleMele=()=>{

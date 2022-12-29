@@ -28,7 +28,8 @@ const Product = sequelize.define("products", {
         type: DataTypes.DATE
     },
     status: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     },
     category: {
         type: DataTypes.STRING

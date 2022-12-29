@@ -5,7 +5,8 @@ const Quantity = sequelize.define('quantities', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     type: {
         type: DataTypes.STRING,
