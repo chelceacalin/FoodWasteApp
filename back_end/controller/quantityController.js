@@ -29,7 +29,7 @@ const getSingleQuantity = async(req, res) => {
     try {
         let quantity = await Quantity.findOne({
             where: {
-                id: req.params.id
+                identificator: req.params.id
             }
         })
 
