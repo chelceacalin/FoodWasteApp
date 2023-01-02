@@ -38,33 +38,69 @@ const RightContent = (props) => {
                 {
                     (foods && users && quantities) ?
                         foods.map((f) => {
+                            console.log(props.availableFilter)
                             if (props.filter !== 'none' && f.category === props.filter) {
-                                return (
-                                    <FoodCard
-                                        key={f.id}
-                                        user={users.find((u) => u.id === f.idUser)}
-                                        quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                        address={f.address}
-                                        description={f.description}
-                                        expDate={f.expDate}
-                                        category={f.category}
-                                        status={f.status}
-                                    />
-                                )
+                                if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                    //randeaza cu filtru 1 si 2
+                                    return (
+                                        <FoodCard
+                                            key={f.id}
+                                            user={users.find((u) => u.id === f.idUser)}
+                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                            address={f.address}
+                                            description={f.description}
+                                            expDate={f.expDate}
+                                            category={f.category}
+                                            status={f.status}
+                                        />
+                                    )
+                                } if (props.availableFilter === 'none') {
+                                    //randeaza doar cu filtru 1
+                                    return (
+                                        <FoodCard
+                                            key={f.id}
+                                            user={users.find((u) => u.id === f.idUser)}
+                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                            address={f.address}
+                                            description={f.description}
+                                            expDate={f.expDate}
+                                            category={f.category}
+                                            status={f.status}
+                                        />
+                                    )
+                                }
                             }
                             if (props.filter === 'none') {
-                                return (
-                                    <FoodCard
-                                        key={f.id}
-                                        user={users.find((u) => u.id === f.idUser)}
-                                        quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                        address={f.address}
-                                        description={f.description}
-                                        expDate={f.expDate}
-                                        category={f.category}
-                                        status={f.status}
-                                    />
-                                )
+                                if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                    //randeaza cu filtru 2
+                                    return (
+                                        <FoodCard
+                                            key={f.id}
+                                            user={users.find((u) => u.id === f.idUser)}
+                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                            address={f.address}
+                                            description={f.description}
+                                            expDate={f.expDate}
+                                            category={f.category}
+                                            status={f.status}
+                                        />
+                                    )
+                                }
+                                if (props.availableFilter === 'none') {
+                                    return (
+                                        <FoodCard
+                                            key={f.id}
+                                            user={users.find((u) => u.id === f.idUser)}
+                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                            address={f.address}
+                                            description={f.description}
+                                            expDate={f.expDate}
+                                            category={f.category}
+                                            status={f.status}
+                                        />
+                                    )
+                                }
+
                             }
                         })
 

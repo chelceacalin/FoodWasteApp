@@ -20,6 +20,7 @@ const LeftMenu = (props) => {
                 <button className="button-35" onClick={() => { props.setFilter('Fructe') }}>Fructe</button>
                 <button className="button-35" onClick={() => { props.setFilter('Legume') }}>Legume</button>
                 <p>Filtreaza disponibilitatea</p>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('none') }} style={{ backgroundColor: '#999999' }}>Reset Filter</button>
                 <button className="button-35" onClick={() => { props.setAvailableFilter('available') }}>Disponibile</button>
                 <button className="button-35" onClick={() => { props.setAvailableFilter('reserved') }}>Rezervate</button>
                 <button className="button-35" onClick={() => { props.setAvailableFilter('sold') }}>Vandute</button>
