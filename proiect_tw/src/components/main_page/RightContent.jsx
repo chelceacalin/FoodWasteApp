@@ -4,23 +4,54 @@ import auth from '../../firebase.js'
 import { useNavigate } from 'react-router-dom';
 import './RightContent.css'
 import FoodCard from "./FoodCard.jsx";
+import axios from 'axios';
 const RightContent = (props) => {
+    const [foods, setFoods] = useState(null);
+    const [users, setUsers] = useState(null);
+    const [quantities, setQuantities] = useState(null);
+    useEffect(() => {
+        axios.get('http://localhost:3030/api/products')
+            .then((resp) => {
+                setFoods(resp.data);
+                console.log('produse:', resp.data)
+            })
+        axios.get('http://localhost:3030/api/users')
+            .then((resp) => {
+                setUsers(resp.data)
+                console.log('useri:', resp.data)
+            })
+        axios.get('http://localhost:3030/api/quantities')
+            .then((resp) => {
+                setQuantities(resp.data)
+                console.log('cantitati:', resp.data)
+            })
+    }, [])
     return (
         <div className="rightContent">
-           <div className="rightContentMenu">
+            <div className="rightContentMenu">
                 <button>Toate produsele</button>
                 <button onClick={props.navToProduseleMele}>Produsele mele</button>
                 <button> Produse rezervate</button>
             </div>
             <div className="rightContentInfo">
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
-                <FoodCard />
+                {
+                    (foods && users && quantities) ?
+                        foods.map((f) => {
+                            return (
+                                <FoodCard
+                                    key={f.id}
+                                    user={users.find((u) => u.id === f.idUser)}
+                                    quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                    address={f.address}
+                                    description={f.description}
+                                    expDate={f.expDate}
+                                    category={f.category}
+                                    status={f.status}
+                                />
+                            )
+                        })
+                        : null
+                }
             </div>
         </div>
     )
