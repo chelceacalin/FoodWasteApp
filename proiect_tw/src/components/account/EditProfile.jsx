@@ -1,7 +1,7 @@
 import React from 'react'
 import auth from '../../firebase.js'
 import axios, { AxiosError } from "axios"
-import { useLocation,useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from 'react';
 import "./EditProfile.css"
 function EditProfile() {
@@ -13,18 +13,19 @@ function EditProfile() {
     const addressEdited = useRef();
     const phoneEdited = useRef();
 
+    const [infoState, setInfoState] = useState('Edit Profile');
 
 
-   
     const getDateUtilizator = async () => {
         const dataFromAxios = await axios.get('http://localhost:3030/api/users/' + state);
-       console.log("Date utilizator: "+dataFromAxios.data);
+        console.log("Date utilizator: " + dataFromAxios.data);
         setDateUtilizator(dataFromAxios.data);
 
     }
 
 
-    useEffect(() => { getDateUtilizator(); 
+    useEffect(() => {
+        getDateUtilizator();
     }, [])
 
 
@@ -42,39 +43,40 @@ function EditProfile() {
         }
         );
 
-        let linkUpdate='http://localhost:3030/api/users/'+dateUtilizator.id;
+        let linkUpdate = 'http://localhost:3030/api/users/' + dateUtilizator.id;
         let copieDateUtilizator = JSON.parse(JSON.stringify(dateUtilizator))
-      
-        console.log(dateUtilizator); 
-       copieDateUtilizator.username=userNameEdited.current.value.length>1?userNameEdited.current.value:dateUtilizator.username;
-       copieDateUtilizator.address=addressEdited.current.value.length>1?addressEdited.current.value:dateUtilizator.address;
-       copieDateUtilizator.phone=phoneEdited.current.value.length>1?phoneEdited.current.value:dateUtilizator.phone;
-        
-       axios.put(linkUpdate,copieDateUtilizator).catch(err=>{console.log(err)});
+
+        console.log(dateUtilizator);
+        copieDateUtilizator.username = userNameEdited.current.value.length > 1 ? userNameEdited.current.value : dateUtilizator.username;
+        copieDateUtilizator.address = addressEdited.current.value.length > 1 ? addressEdited.current.value : dateUtilizator.address;
+        copieDateUtilizator.phone = phoneEdited.current.value.length > 1 ? phoneEdited.current.value : dateUtilizator.phone;
+
+        axios.put(linkUpdate, copieDateUtilizator).catch(err => { console.log(err) });
 
 
-       // Updatam Adresele Produselor Pentru User
-            let linkPrimireProduse='http://localhost:3030/api/products/user/'+dateUtilizator.id;
+        // Updatam Adresele Produselor Pentru User
+        let linkPrimireProduse = 'http://localhost:3030/api/products/user/' + dateUtilizator.id;
 
-            axios
+        axios
             .get(linkPrimireProduse, {})
             .then((data) => {
-                    let produse=data.data;
-                    
-                    produse.forEach((produs)=>{
+                let produse = data.data;
 
-                        let copieProdus=JSON.parse(JSON.stringify(produs));
-                        copieProdus.address= copieDateUtilizator.address;
-                        let linkUpdateProduse='http://localhost:3030/api/products/'+copieProdus.id;
-                        axios.put(linkUpdateProduse,copieProdus).catch(err=>{console.log(err)});
-                     //   console.log(produs.id,produs.address,produs.idUser);
-                    })
+                produse.forEach((produs) => {
+
+                    let copieProdus = JSON.parse(JSON.stringify(produs));
+                    copieProdus.address = copieDateUtilizator.address;
+                    let linkUpdateProduse = 'http://localhost:3030/api/products/' + copieProdus.id;
+                    axios.put(linkUpdateProduse, copieProdus).catch(err => { console.log(err) });
+                    //   console.log(produs.id,produs.address,produs.idUser);
+                })
 
             })
-        
-            alert('Changes Saved')
-                setTimeout(()=>{  navigate("../authenticated", { replace: true});},3000)
 
+        // alert('Changes Saved')
+        setInfoState("Changes saved!")
+        setTimeout(() => { navigate("../authenticated", { replace: true }); }, 1000)
+        // setTimeout(function () { alert('hello world'); }, 1);
     }
 
     return (
@@ -85,7 +87,7 @@ function EditProfile() {
         }}>
             <div className='EditProfile' >
                 <form method="get" id="login-form" className="login-form" role="main" onSubmit={submitAll}>
-                    <h1 > <pre> Edit Profile</pre> </h1>
+                    <h1 > <pre> {infoState}</pre> </h1>
 
 
                     <div>
@@ -110,7 +112,7 @@ function EditProfile() {
                             <span className="required">Phone</span>
                         </label>
                     </div>
-                    <input className="btnSaveChanges" type="button" value="Save Changes" onClick={submitAll} style={{ backgroundColor: 'blue', color: 'white', fontWeight: 'bold' }} />
+                    <input className="btnSaveChanges" type="button" value="Save Changes" onClick={submitAll} />
 
                     <div className="email">
                         <a href="/authenticated">Go Back To Main Page</a>
