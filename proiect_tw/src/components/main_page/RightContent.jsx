@@ -14,17 +14,17 @@ const RightContent = (props) => {
         axios.get('http://localhost:3030/api/products')
             .then((resp) => {
                 setFoods(resp.data);
-                console.log('produse:', resp.data)
+                //console.log('produse:', resp.data)
             })
         axios.get('http://localhost:3030/api/users')
             .then((resp) => {
                 setUsers(resp.data)
-                console.log('useri:', resp.data)
+                //console.log('useri:', resp.data)
             })
         axios.get('http://localhost:3030/api/quantities')
             .then((resp) => {
                 setQuantities(resp.data)
-                console.log('cantitati:', resp.data)
+                //console.log('cantitati:', resp.data)
             })
     }, [])
     return (
