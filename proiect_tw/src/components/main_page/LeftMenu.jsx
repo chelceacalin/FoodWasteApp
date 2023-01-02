@@ -53,7 +53,9 @@ const LeftMenu = (props) => {
         <div className="leftMenu">
             <div className="leftMenuProfile">
                 <img src={currentProfilePic.length > 1 ? currentProfilePic : 'https://firebasestorage.googleapis.com/v0/b/proiecttw-84ef3.appspot.com/o/ProfilePics%2F1244141-200.png?alt=media&token=88ffe4ee-cb6a-4ab7-aad9-73da30ea92c2'} onClick={uploadImage} title="Click to upload image" />
-                <input type="file" onChange={(event) => { setProfilePic(event.target.files[0]) }} />
+                <br></br>
+                <label htmlFor='file'>Select Photo</label>
+                <input type="file" id='file' onChange={(event) => { setProfilePic(event.target.files[0]) }} />
                 <p>Welcome,<span style={{ color: '#e3a1ff' }}> {numeUtilizator} </span> </p>
                 <button className="button-35" onClick={editProfile}>Edit profile</button>
                 <button className="button-35" onClick={props.addProduct}>Add product</button>

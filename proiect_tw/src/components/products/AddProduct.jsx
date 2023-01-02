@@ -3,8 +3,10 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from "../../firebase.js";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, v4 } from 'uuid';
 import { navigate, useNavigate } from "react-router-dom";
+import storage from '../../firebaseStorage.js'
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 const AddProduct = () => {
   const [productDescription, setproductDescription] = useState("");
   const [isTradable, set_isTradable] = useState(true);
@@ -13,6 +15,7 @@ const AddProduct = () => {
   const [categorie, setCategorie] = useState("Carne");
   const [cantitate, setCantitate] = useState(0);
   const [unitsOfMeasure, setunitsOfMeasure] = useState("Kilogram");
+  const [foodPhoto, setFoodPhoto] = useState(null);
 
   let incrementContor = () => {
     setContor((cnt) => {
@@ -26,6 +29,8 @@ const AddProduct = () => {
     })
   }
   let navigate = useNavigate();
+
+
   return (
 
     <div className="login-box">
@@ -96,6 +101,11 @@ const AddProduct = () => {
           </select>
         </div>
         <br></br>
+        <div className="uploadPicFood">
+          <label style={{ color: "#54b3d6" }}>Food Photo</label>
+          <input type="file" onChange={(event) => { setFoodPhoto(event.target.files[0]) }} />
+        </div>
+        <br></br>
         <br></br>
 
 
@@ -103,7 +113,7 @@ const AddProduct = () => {
 
         <a href="#" style={{ marginLeft: 50 }} onClick={() => {
 
-          if (productDescription.length > 1) {
+          if (productDescription.length > 1 && foodPhoto) {
             console.log(auth.currentUser.uid, auth.currentUser.email, auth.currentUser.displayName);
 
 
@@ -137,7 +147,8 @@ const AddProduct = () => {
                   });
 
                 //Pentru acea cantitate trebuie sa postez produsul care are detaliile userului
-                console.log(data.data.photoUrl);
+                // console.log(data.data.photoUrl);
+
                 let ProductObject = {
                   "idUser": data.data.id,
                   "address": data.data.address.length > 1 ? data.data.address : "Empty",
@@ -150,29 +161,29 @@ const AddProduct = () => {
                   "quantity_id": IDUNIC_qty
                 }
 
-                //Postez produsul
-                axios
-                  .post("http://localhost:3030/api/products/", ProductObject)
-                  .then(function (response) { })
-                  .catch(function (error) {
-                    alert("Error when adding new Product " + error.message);
-                  });
-                setTimeout(() => { navigate("../authenticated", { replace: true }); }, 500)
+                //postez intai poza produsului:
+                const imgRefFood = ref(storage, `FoodPics/${v4() + '_' + foodPhoto.name}`);
+                uploadBytes(imgRefFood, foodPhoto).then(() => {
+                  //dupa upload ii iau linkul
+                  getDownloadURL(imgRefFood).then((res) => {
+                    ProductObject.photoURL = res;
+                    console.log(ProductObject)
+                    //Postez produsul
+                    axios
+                      .post("http://localhost:3030/api/products/", ProductObject)
+                      .then(function (response) { })
+                      .catch(function (error) {
+                        alert("Error when adding new Product " + error.message);
+                      });
+                    setTimeout(() => { navigate("../authenticated", { replace: true }); }, 500)
+                  })
+                });
+
               });
-
-
-
-
-
           }
-
-
           else {
-            alert("Trebuie sa introduceti un nume pentru aliment");
+            alert("Trebuie sa introduceti un nume pentru aliment si poza");
           }
-
-
-
         }}>
           Add Product
           <span></span>

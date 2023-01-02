@@ -47,6 +47,21 @@
     margin: 0;
 }
 
+.foodCard .textContentRed {
+    margin: 0;
+    color: red
+}
+
+.foodCard .textContentGreen {
+    margin: 0;
+    color: rgb(0, 161, 0)
+}
+
+.foodCard .textContentYellow {
+    margin: 0;
+    color: rgb(223, 152, 1)
+}
+
 .foodCard img {
     height: 120px;
     width: 170px;
