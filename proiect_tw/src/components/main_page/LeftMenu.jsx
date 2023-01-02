@@ -3,13 +3,34 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from '../../firebase.js'
 import { useNavigate } from 'react-router-dom';
 import "./LeftMenu.css"
+import axios from "axios";
 const LeftMenu = (props) => {
+    const navigate = useNavigate();
+    //console.log("Ce"+auth.currentUser.uid);
+    let [numeUtilizator, setNumeUtilizator] = useState('')
+
+    const getNumeUser = async () => {
+        const dataFromAxios = await axios.get('http://localhost:3030/api/users/' + auth.currentUser.uid);
+        //console.log(dataFromAxios.data.username.split(" ")[0]);
+        setNumeUtilizator(dataFromAxios.data.username.split(" ")[0]);
+    }
+
+    useEffect(() => {
+        getNumeUser();
+    }, [])
+
+    //console.log(numeUtilizator);
+
+    const editProfile=()=>{
+        navigate("../editProfile", { replace: true,state: auth.currentUser.uid});
+    }
+
     return (
         <div className="leftMenu">
             <div className="leftMenuProfile">
                 <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
-                <p>Welcome, </p>
-                <button className="button-35">Edit profile</button>
+                <p>Welcome,<span style={{ color: '#e3a1ff' }}> {numeUtilizator} </span> </p>
+                <button className="button-35" onClick={editProfile}>Edit profile</button>
                 <button className="button-35" onClick={props.addProduct}>Add product</button>
             </div>
             <hr />

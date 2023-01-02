@@ -46,6 +46,21 @@ const getSingleProduct = async(req, res) => {
     }
 }
 
+//Get Products Where User ID is selected
+
+const getProductsByID = async(req, res) => {
+    try {
+        let prod = await Product.findAll({
+            where: {
+                idUser: req.params.id
+            }
+        })
+        res.status(200).send(prod);
+    } catch (err) {
+        res.status(500).send({ message: 'Eroare' });
+    }
+}
+
 //Update
 const updateProduct = async(req, res) => {
     try {
@@ -85,5 +100,6 @@ module.exports = {
     getSingleProduct,
     deleteProductById,
     deleteall,
-    updateProduct
+    updateProduct,
+    getProductsByID
 };

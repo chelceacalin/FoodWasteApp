@@ -38,7 +38,7 @@ let signInWithGoogleAPP=()=>{
                // console.log(data.data);
                 if (data.data.id > 0) {
                   exists = 1;
-                  console.log("Exists already: " + exists);
+                  //console.log("Exists already: " + exists);
                 } else {
                   exists = 0;
                   if (exists === 0) {
