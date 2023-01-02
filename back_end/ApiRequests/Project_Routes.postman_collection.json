@@ -5,9 +5,11 @@
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "16932928"
     },
-    "item": [{
+    "item": [
+        {
             "name": "Product_Routes",
-            "item": [{
+            "item": [
+                {
                     "name": "AddProduct",
                     "request": {
                         "method": "POST",
@@ -192,7 +194,8 @@
         },
         {
             "name": "User_Routes",
-            "item": [{
+            "item": [
+                {
                     "name": "AddUser",
                     "request": {
                         "method": "POST",
@@ -344,7 +347,8 @@
         },
         {
             "name": "Reservation_Routes",
-            "item": [{
+            "item": [
+                {
                     "name": "Add Reservation",
                     "request": {
                         "method": "POST",
@@ -498,7 +502,8 @@
         },
         {
             "name": "Quantity_Routes",
-            "item": [{
+            "item": [
+                {
                     "name": "Add Quantity",
                     "request": {
                         "method": "POST",
@@ -652,7 +657,8 @@
         },
         {
             "name": "newUserSub",
-            "item": [{
+            "item": [
+                {
                     "name": "Add New User Sub",
                     "request": {
                         "method": "POST",
