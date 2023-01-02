@@ -8,15 +8,21 @@ const LeftMenu = (props) => {
         <div className="leftMenu">
             <div className="leftMenuProfile">
                 <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
-                <p>Welcome, NAME</p>
+                <p>Welcome, </p>
                 <button className="button-35">Edit profile</button>
                 <button className="button-35" onClick={props.addProduct}>Add product</button>
             </div>
             <hr />
             <div className="leftMenuFilter">
-                <button className="button-35">Carne</button>
-                <button className="button-35">Fructe</button>
-                <button className="button-35">Legume</button>
+                <p>Filtreaza</p>
+                <button className="button-35" onClick={() => { props.setFilter('none') }} style={{ backgroundColor: '#999999' }}>Reset Filter</button>
+                <button className="button-35" onClick={() => { props.setFilter('Carne') }}>Carne</button>
+                <button className="button-35" onClick={() => { props.setFilter('Fructe') }}>Fructe</button>
+                <button className="button-35" onClick={() => { props.setFilter('Legume') }}>Legume</button>
+                <p>Filtreaza disponibilitatea</p>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('available') }}>Disponibile</button>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('reserved') }}>Rezervate</button>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('sold') }}>Vandute</button>
             </div>
             <div className="leftMenuOptions">
                 <button className="button-35" onClick={props.handleSignOut}>Sign out</button>

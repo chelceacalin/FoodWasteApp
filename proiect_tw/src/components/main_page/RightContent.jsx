@@ -6,6 +6,7 @@ import './RightContent.css'
 import FoodCard from "./FoodCard.jsx";
 import axios from 'axios';
 const RightContent = (props) => {
+    let statusList = ['reserved', 'available', 'sold']
     const [foods, setFoods] = useState(null);
     const [users, setUsers] = useState(null);
     const [quantities, setQuantities] = useState(null);
@@ -37,19 +38,36 @@ const RightContent = (props) => {
                 {
                     (foods && users && quantities) ?
                         foods.map((f) => {
-                            return (
-                                <FoodCard
-                                    key={f.id}
-                                    user={users.find((u) => u.id === f.idUser)}
-                                    quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                    address={f.address}
-                                    description={f.description}
-                                    expDate={f.expDate}
-                                    category={f.category}
-                                    status={f.status}
-                                />
-                            )
+                            if (props.filter !== 'none' && f.category === props.filter) {
+                                return (
+                                    <FoodCard
+                                        key={f.id}
+                                        user={users.find((u) => u.id === f.idUser)}
+                                        quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                        address={f.address}
+                                        description={f.description}
+                                        expDate={f.expDate}
+                                        category={f.category}
+                                        status={f.status}
+                                    />
+                                )
+                            }
+                            if (props.filter === 'none') {
+                                return (
+                                    <FoodCard
+                                        key={f.id}
+                                        user={users.find((u) => u.id === f.idUser)}
+                                        quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                        address={f.address}
+                                        description={f.description}
+                                        expDate={f.expDate}
+                                        category={f.category}
+                                        status={f.status}
+                                    />
+                                )
+                            }
                         })
+
                         : null
                 }
             </div>

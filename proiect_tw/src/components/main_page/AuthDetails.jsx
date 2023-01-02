@@ -9,6 +9,9 @@ import RightContent from "./RightContent.jsx";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
+  const [filter, setFilter] = useState('none');
+  const [owningFilter, setOwningFilter] = useState('none');
+  const [availableFilter, setAvailableFilter] = useState('none');
   const navigate = useNavigate();
 
 
@@ -18,7 +21,7 @@ const AuthDetails = () => {
         if (user) {
           setAuthUser(user);
           // console.log("Logat: " +user);  
-          //console.log(user);
+          // console.log(user);
 
         }
 
@@ -44,7 +47,7 @@ const AuthDetails = () => {
     navigate('../addProduct ', { replace: true })
   }
 
-  const navToProduseleMele=()=>{
+  const navToProduseleMele = () => {
 
   }
 
@@ -54,8 +57,15 @@ const AuthDetails = () => {
         <>
           {/* <p>{`Signed In as ${authUser.email}`}</p>
           <button onClick={userSignOut}>Sign Out</button> */}
-          <LeftMenu handleSignOut={userSignOut} addProduct={navToAddProduct}   />
-          <RightContent toateprodusele={()=>{  navigate('../authenticated', { replace: true })}}  navToProduseleMele={navToProduseleMele}  />
+          <LeftMenu handleSignOut={userSignOut} addProduct={navToAddProduct}
+            setFilter={setFilter}
+            setOwningFilter={setOwningFilter}
+            setAvailableFilter={setAvailableFilter}
+            user={authUser} />
+          <RightContent toateprodusele={() => { navigate('../authenticated', { replace: true }) }} navToProduseleMele={navToProduseleMele}
+            filter={filter}
+            owningFilter={owningFilter}
+            availableFilter={availableFilter} />
         </>
       ) : (
         <p>Signed Out</p>
