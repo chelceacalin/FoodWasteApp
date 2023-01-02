@@ -1,10 +1,11 @@
 import React from 'react'
 import auth from '../../firebase.js'
-import axios, { AxiosError } from "axios";
-import { useLocation } from "react-router-dom";
+import axios, { AxiosError } from "axios"
+import { useLocation,useNavigate} from "react-router-dom";
 import { useEffect, useState, useRef } from 'react';
 import "./EditProfile.css"
 function EditProfile() {
+    const navigate = useNavigate();
 
     let [dateUtilizator, setDateUtilizator] = useState('')
     const { state } = useLocation();
@@ -71,7 +72,8 @@ function EditProfile() {
 
             })
         
-                setTimeout(()=>{ alert('Changes Saved')},3000)
+            alert('Changes Saved')
+                setTimeout(()=>{  navigate("../authenticated", { replace: true});},3000)
 
     }
 
