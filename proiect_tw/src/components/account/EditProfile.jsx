@@ -71,6 +71,8 @@ function EditProfile() {
 
             })
         
+                setTimeout(()=>{ alert('Changes Saved')},3000)
+
     }
 
     return (
@@ -106,7 +108,7 @@ function EditProfile() {
                             <span className="required">Phone</span>
                         </label>
                     </div>
-                    <input type="button" value="Save Changes" onClick={submitAll} style={{ backgroundColor: 'blue', color: 'white', fontWeight: 'bold' }} />
+                    <input className="btnSaveChanges" type="button" value="Save Changes" onClick={submitAll} style={{ backgroundColor: 'blue', color: 'white', fontWeight: 'bold' }} />
 
                     <div className="email">
                         <a href="/authenticated">Go Back To Main Page</a>
