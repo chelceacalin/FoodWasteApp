@@ -22,8 +22,6 @@ const LeftMenu = (props) => {
     //console.log(numeUtilizator);
 
     const editProfile=()=>{
-        console.log("Apasat");  
-      
         navigate("../editProfile", { replace: true,state: auth.currentUser.uid});
     }
 

@@ -17,19 +17,23 @@ function EditProfile() {
    
     const getDateUtilizator = async () => {
         const dataFromAxios = await axios.get('http://localhost:3030/api/users/' + state);
-        //console.log(dataFromAxios.data.username.split(" ")[0]);
+       console.log("Date utilizator: "+dataFromAxios.data);
         setDateUtilizator(dataFromAxios.data);
 
     }
 
 
-    useEffect(() => { getDateUtilizator() }, [])
+    useEffect(() => { getDateUtilizator(); 
+    }, [])
+
+
 
 
 
 
 
     let submitAll = () => {
+        // Updatam Profilul Utilizatorului
         console.log({
             username: userNameEdited.current.value,
             address: addressEdited.current.value,
@@ -40,12 +44,33 @@ function EditProfile() {
         let linkUpdate='http://localhost:3030/api/users/'+dateUtilizator.id;
         let copieDateUtilizator = JSON.parse(JSON.stringify(dateUtilizator))
       
+        console.log(dateUtilizator); 
        copieDateUtilizator.username=userNameEdited.current.value.length>1?userNameEdited.current.value:dateUtilizator.username;
        copieDateUtilizator.address=addressEdited.current.value.length>1?addressEdited.current.value:dateUtilizator.address;
        copieDateUtilizator.phone=phoneEdited.current.value.length>1?phoneEdited.current.value:dateUtilizator.phone;
         
        axios.put(linkUpdate,copieDateUtilizator).catch(err=>{console.log(err)});
 
+
+       // Updatam Adresele Produselor Pentru User
+            let linkPrimireProduse='http://localhost:3030/api/products/user/'+dateUtilizator.id;
+
+            axios
+            .get(linkPrimireProduse, {})
+            .then((data) => {
+                    let produse=data.data;
+                    
+                    produse.forEach((produs)=>{
+
+                        let copieProdus=JSON.parse(JSON.stringify(produs));
+                        copieProdus.address= copieDateUtilizator.address;
+                        let linkUpdateProduse='http://localhost:3030/api/products/'+copieProdus.id;
+                        axios.put(linkUpdateProduse,copieProdus).catch(err=>{console.log(err)});
+                     //   console.log(produs.id,produs.address,produs.idUser);
+                    })
+
+            })
+        
     }
 
     return (
