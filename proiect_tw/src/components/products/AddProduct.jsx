@@ -4,194 +4,192 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from "../../firebase.js";
 import { v4 as uuidv4 } from 'uuid';
-const AddProduct=()=> {
-const [productDescription, setproductDescription] = useState("");
-const [isTradable, set_isTradable] = useState(true);
-const [contor,setContor]=useState(1);
-const [startDate, setStartDate] = useState(new Date());
-const [categorie,setCategorie]=useState("Carne");
-const [cantitate,setCantitate]=useState(0);
-const [unitsOfMeasure,setunitsOfMeasure]=useState("Kilogram");
+import { navigate, useNavigate } from "react-router-dom";
+const AddProduct = () => {
+  const [productDescription, setproductDescription] = useState("");
+  const [isTradable, set_isTradable] = useState(true);
+  const [contor, setContor] = useState(1);
+  const [startDate, setStartDate] = useState(new Date());
+  const [categorie, setCategorie] = useState("Carne");
+  const [cantitate, setCantitate] = useState(0);
+  const [unitsOfMeasure, setunitsOfMeasure] = useState("Kilogram");
 
-let incrementContor=()=>{
-    setContor((cnt)=>{
-        if(cnt%2==0){
-          set_isTradable(true);
-        }
-        else{
-            set_isTradable(false);
-        }
-        return cnt+1;
+  let incrementContor = () => {
+    setContor((cnt) => {
+      if (cnt % 2 == 0) {
+        set_isTradable(true);
+      }
+      else {
+        set_isTradable(false);
+      }
+      return cnt + 1;
     })
-}
-
-
-
-
-
+  }
+  let navigate = useNavigate();
   return (
 
     <div className="login-box">
-         
-    <h1 id="textColorForLoginCreate">Add Product</h1>
-    <form >
-      <div className="user-box">
-        <input
-          type="text"
-          placeholder="Product Description" 
-            value={productDescription!==null?productDescription:"Adauga Produs"}    
-          onChange={(e) => setproductDescription(e.target.value)}
-        ></input>
-        <label>Description</label>
-      </div>
+
+      <h1 id="textColorForLoginCreate">Add Product</h1>
+      <form >
+        <div className="user-box">
+          <input
+            type="text"
+            placeholder="Product Description"
+            value={productDescription !== null ? productDescription : "Adauga Produs"}
+            onChange={(e) => setproductDescription(e.target.value)}
+          ></input>
+          <label>Description</label>
+        </div>
 
 
-      <div className="user-box">
-        <input type="checkbox"  onChange={incrementContor}></input>
-        <label>Is Product Tradable</label>
-      </div>
-    
-    
-      <div className="user-box">
-      <label>Expiration Date</label>
-      <br></br><br></br>
-      <DatePicker
-     selected={startDate}
-     onChange={date => {setStartDate(date)
-    }}
-     selectsStart // tells this DatePicker that it is part of a range*
-     startDate={startDate}
-   />
-      </div>
+        <div className="user-box">
+          <input type="checkbox" onChange={incrementContor}></input>
+          <label>Is Product Tradable</label>
+        </div>
 
 
-      <div className="user-box">
-      <label style={{color:"#54b3d6"}}>Is Product Tradable</label>
-    <br></br><br></br>
-      <select name="Categorie" id="comboA" onChange={(e)=>{setCategorie(e.target.value)}}>
-      <option value="Carne" >Carne</option>
-      <option value="Fructe">Fructe</option>
-      <option value="Legume">Legume</option>
-        </select>
+        <div className="user-box">
+          <label>Expiration Date</label>
+          <br></br><br></br>
+          <DatePicker
+            selected={startDate}
+            onChange={date => {
+              setStartDate(date)
+            }}
+            selectsStart // tells this DatePicker that it is part of a range*
+            startDate={startDate}
+          />
+        </div>
+
+
+        <div className="user-box">
+          <label style={{ color: "#54b3d6" }}>Is Product Tradable</label>
+          <br></br><br></br>
+          <select name="Categorie" id="comboA" onChange={(e) => { setCategorie(e.target.value) }}>
+            <option value="Carne" >Carne</option>
+            <option value="Fructe">Fructe</option>
+            <option value="Legume">Legume</option>
+          </select>
         </div>
         <br></br>
         <br></br>
-    
-    
-      <div className="user-box">
-        <input
-          type="number" step=".01"
-          placeholder="Enter quantity" onChange={(e)=>{setCantitate(e.target.value)}}
+
+
+        <div className="user-box">
+          <input
+            type="number" step=".01"
+            placeholder="Enter quantity" onChange={(e) => { setCantitate(e.target.value) }}
           //value={password}
           //onChange={(e) => setPassword(e.target.value)}
-        ></input>
-        <label>Cantitate</label>
-      </div>
+          ></input>
+          <label>Cantitate</label>
+        </div>
 
 
-      <div className="user-box">
-      <label style={{color:"#54b3d6"}}>Unit of Measure</label>
-    <br></br><br></br>
-      <select name="Categorie" id="categorie" onChange={(e)=>{setunitsOfMeasure(e.target.value)}}>
-      <option value="Kilograms">Kilograms</option>
-      <option value="Liters">Liters</option>
-        </select>
+        <div className="user-box">
+          <label style={{ color: "#54b3d6" }}>Unit of Measure</label>
+          <br></br><br></br>
+          <select name="Categorie" id="categorie" onChange={(e) => { setunitsOfMeasure(e.target.value) }}>
+            <option value="Kilograms">Kilograms</option>
+            <option value="Liters">Liters</option>
+          </select>
         </div>
         <br></br>
         <br></br>
-    
 
 
 
-      <a href="#" style={{marginLeft:50}} onClick={()=>{
 
-if(productDescription.length>1){
-    console.log(auth.currentUser.uid,auth.currentUser.email,auth.currentUser.displayName);
+        <a href="#" style={{ marginLeft: 50 }} onClick={() => {
 
-
-    console.log("Descriere: "+productDescription+ "\nE schimbabil: "+!isTradable+"\nDate: "+Date.parse(startDate)
-    +"\nCategorie: "+categorie+
-    "\nCantitate: "+ parseFloat(cantitate) +
-    "\nUnits Of Measure: "+unitsOfMeasure);
-
-let IDUNIC_qty=uuidv4();
-    let QtyObj={
-        "type":unitsOfMeasure,
-        "units":parseFloat(cantitate),
-        "identificator":IDUNIC_qty
-    };
+          if (productDescription.length > 1) {
+            console.log(auth.currentUser.uid, auth.currentUser.email, auth.currentUser.displayName);
 
 
- let UserInfolink='http://localhost:3030/api/users/'+auth.currentUser.uid;
+            console.log("Descriere: " + productDescription + "\nE schimbabil: " + !isTradable + "\nDate: " + Date.parse(startDate)
+              + "\nCategorie: " + categorie +
+              "\nCantitate: " + parseFloat(cantitate) +
+              "\nUnits Of Measure: " + unitsOfMeasure);
 
-    axios
-    .get(UserInfolink, {})
-    .then((data) => { 
-        //Detaliile userului
-        console.log(data.data);
-        
-        //Postez Cantitatea
-         axios
-         .post("http://localhost:3030/api/quantities/",QtyObj)
-         .then(function (response) { })
-         .catch(function (error) {
-           alert("Error when adding new Qty " + error.message);
-         });
-
-         //Pentru acea cantitate trebuie sa postez produsul care are detaliile userului
-     console.log(data.data.photoUrl);
-          let ProductObject=  {
-            "idUser":data.data.id,
-            "address":data.data.address.length>1?data.data.address:"Empty",
-            "photoURL":data.data.photoUrl.length>1?data.data.photoUrl:"Empty",
-            "description":productDescription,
-            "forTrade":!isTradable,
-            "expDate":Date.parse(startDate),
-            "status":1,
-            "category":categorie,
-            "quantity_id":IDUNIC_qty
-        }
-
-        //Postez produsul
-        axios
-        .post("http://localhost:3030/api/products/",ProductObject)
-        .then(function (response) { })
-        .catch(function (error) {
-          alert("Error when adding new Product " + error.message);
-        });
-    
-    });
-
-     
-    
-       
-
-                    }
+            let IDUNIC_qty = uuidv4();
+            let QtyObj = {
+              "type": unitsOfMeasure,
+              "units": parseFloat(cantitate),
+              "identificator": IDUNIC_qty
+            };
 
 
-        else{
+            let UserInfolink = 'http://localhost:3030/api/users/' + auth.currentUser.uid;
+
+            axios
+              .get(UserInfolink, {})
+              .then((data) => {
+                //Detaliile userului
+                console.log(data.data);
+
+                //Postez Cantitatea
+                axios
+                  .post("http://localhost:3030/api/quantities/", QtyObj)
+                  .then(function (response) { })
+                  .catch(function (error) {
+                    alert("Error when adding new Qty " + error.message);
+                  });
+
+                //Pentru acea cantitate trebuie sa postez produsul care are detaliile userului
+                console.log(data.data.photoUrl);
+                let ProductObject = {
+                  "idUser": data.data.id,
+                  "address": data.data.address.length > 1 ? data.data.address : "Empty",
+                  "photoURL": data.data.photoUrl.length > 1 ? data.data.photoUrl : "Empty",
+                  "description": productDescription,
+                  "forTrade": !isTradable,
+                  "expDate": Date.parse(startDate),
+                  "status": 1,
+                  "category": categorie,
+                  "quantity_id": IDUNIC_qty
+                }
+
+                //Postez produsul
+                axios
+                  .post("http://localhost:3030/api/products/", ProductObject)
+                  .then(function (response) { })
+                  .catch(function (error) {
+                    alert("Error when adding new Product " + error.message);
+                  });
+                setTimeout(() => { navigate("../authenticated", { replace: true }); }, 500)
+              });
+
+
+
+
+
+          }
+
+
+          else {
             alert("Trebuie sa introduceti un nume pentru aliment");
-        }
+          }
 
 
 
-      }}>
-             Add Product
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
+        }}>
+          Add Product
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
 
-      <br></br>
-      <br></br>
-      <br></br>
-      <a id="alreadyHaveAccount" href="/authenticated">Changed your mind?</a>
+        <br></br>
+        <br></br>
+        <br></br>
+        <a id="alreadyHaveAccount" href="/authenticated">Changed your mind?</a>
 
-    </form>
-  </div>
+      </form>
+    </div>
 
-    
+
   )
 }
 

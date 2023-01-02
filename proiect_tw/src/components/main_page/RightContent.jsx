@@ -38,7 +38,7 @@ const RightContent = (props) => {
                 {
                     (foods && users && quantities) ?
                         foods.map((f) => {
-                            console.log(props.availableFilter)
+                            console.log(auth.currentUser.uid)
                             if (props.filter !== 'none' && f.category === props.filter) {
                                 if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
                                     //randeaza cu filtru 1 si 2
@@ -103,7 +103,6 @@ const RightContent = (props) => {
 
                             }
                         })
-
                         : null
                 }
             </div>
