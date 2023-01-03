@@ -59,11 +59,13 @@ const AuthDetails = () => {
           <button onClick={userSignOut}>Sign Out</button> */}
           <LeftMenu handleSignOut={userSignOut} addProduct={navToAddProduct}
             setFilter={setFilter}
-            setOwningFilter={setOwningFilter}
+            filter={filter}
+            availableFilter={availableFilter}
             setAvailableFilter={setAvailableFilter}
             user={authUser} />
           <RightContent toateprodusele={() => { navigate('../authenticated', { replace: true }) }} navToProduseleMele={navToProduseleMele}
             filter={filter}
+            setOwningFilter={setOwningFilter}
             owningFilter={owningFilter}
             availableFilter={availableFilter} />
         </>

@@ -64,14 +64,14 @@ const LeftMenu = (props) => {
             <div className="leftMenuFilter">
                 <p>Filtreaza</p>
                 <button className="button-35" onClick={() => { props.setFilter('none') }} style={{ backgroundColor: '#999999' }}>Reset Filter</button>
-                <button className="button-35" onClick={() => { props.setFilter('Carne') }}>Carne</button>
-                <button className="button-35" onClick={() => { props.setFilter('Fructe') }}>Fructe</button>
-                <button className="button-35" onClick={() => { props.setFilter('Legume') }}>Legume</button>
+                <button className="button-35" onClick={() => { props.setFilter('Carne') }} style={{ backgroundColor: props.filter === 'Carne' ? '#bff7ab' : '#ffffff' }}>Carne</button>
+                <button className="button-35" onClick={() => { props.setFilter('Fructe') }} style={{ backgroundColor: props.filter === 'Fructe' ? '#bff7ab' : '#ffffff' }}>Fructe</button>
+                <button className="button-35" onClick={() => { props.setFilter('Legume') }} style={{ backgroundColor: props.filter === 'Legume' ? '#bff7ab' : '#ffffff' }}>Legume</button>
                 <p>Filtreaza disponibilitatea</p>
                 <button className="button-35" onClick={() => { props.setAvailableFilter('none') }} style={{ backgroundColor: '#999999' }}>Reset Filter</button>
-                <button className="button-35" onClick={() => { props.setAvailableFilter('available') }}>Disponibile</button>
-                <button className="button-35" onClick={() => { props.setAvailableFilter('reserved') }}>Rezervate</button>
-                <button className="button-35" onClick={() => { props.setAvailableFilter('sold') }}>Vandute</button>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('available') }} style={{ backgroundColor: props.availableFilter === 'available' ? '#bff7ab' : '#ffffff' }}>Disponibile</button>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('reserved') }} style={{ backgroundColor: props.availableFilter === 'reserved' ? '#bff7ab' : '#ffffff' }}>Rezervate</button>
+                <button className="button-35" onClick={() => { props.setAvailableFilter('sold') }} style={{ backgroundColor: props.availableFilter === 'sold' ? '#bff7ab' : '#ffffff' }}>Vandute</button>
             </div>
             <div className="leftMenuOptions">
                 <button className="button-35" onClick={props.handleSignOut}>Sign out</button>

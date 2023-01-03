@@ -30,80 +30,152 @@ const RightContent = (props) => {
     return (
         <div className="rightContent">
             <div className="rightContentMenu">
-                <button>Toate produsele</button>
-                <button onClick={props.navToProduseleMele}>Produsele mele</button>
-                <button> Produse rezervate</button>
+                <button onClick={() => { props.setOwningFilter('none') }} style={{ backgroundColor: props.owningFilter === 'none' ? '#bff7ab' : '#ffffff' }}>Toate produsele</button>
+                <button onClick={() => { props.setOwningFilter('own') }} style={{ backgroundColor: props.owningFilter === 'own' ? '#bff7ab' : '#ffffff' }}>Produsele mele</button>
+                <button> Produsele mele rezervate</button>
             </div>
             <div className="rightContentInfo">
                 {
                     (foods && users && quantities) ?
                         foods.map((f) => {
-                            if (props.filter !== 'none' && f.category === props.filter) {
-                                if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
-                                    //randeaza cu filtru 1 si 2
-                                    return (
-                                        <FoodCard
-                                            key={f.id}
-                                            user={users.find((u) => u.id === f.idUser)}
-                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                            address={f.address}
-                                            description={f.description}
-                                            expDate={f.expDate}
-                                            category={f.category}
-                                            status={f.status}
-                                            photoURL={f.photoURL}
-                                        />
-                                    )
-                                } if (props.availableFilter === 'none') {
-                                    //randeaza doar cu filtru 1
-                                    return (
-                                        <FoodCard
-                                            key={f.id}
-                                            user={users.find((u) => u.id === f.idUser)}
-                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                            address={f.address}
-                                            description={f.description}
-                                            expDate={f.expDate}
-                                            category={f.category}
-                                            status={f.status}
-                                            photoURL={f.photoURL}
-                                        />
-                                    )
+                            if (props.owningFilter === 'own' && f.idUser === auth.currentUser.uid) {
+                                console.log("da")
+                                if (props.filter !== 'none' && f.category === props.filter) {
+                                    if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                        //randeaza cu filtru 1 si 2
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    } if (props.availableFilter === 'none') {
+                                        //randeaza doar cu filtru 1
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
+                                }
+                                if (props.filter === 'none') {
+                                    if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                        //randeaza cu filtru 2
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
+                                    if (props.availableFilter === 'none') {
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
+
                                 }
                             }
-                            if (props.filter === 'none') {
-                                if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
-                                    //randeaza cu filtru 2
-                                    return (
-                                        <FoodCard
-                                            key={f.id}
-                                            user={users.find((u) => u.id === f.idUser)}
-                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                            address={f.address}
-                                            description={f.description}
-                                            expDate={f.expDate}
-                                            category={f.category}
-                                            status={f.status}
-                                            photoURL={f.photoURL}
-                                        />
-                                    )
+                            if (props.owningFilter === 'none') {
+                                if (props.filter !== 'none' && f.category === props.filter) {
+                                    if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                        //randeaza cu filtru 1 si 2
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    } if (props.availableFilter === 'none') {
+                                        //randeaza doar cu filtru 1
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
                                 }
-                                if (props.availableFilter === 'none') {
-                                    return (
-                                        <FoodCard
-                                            key={f.id}
-                                            user={users.find((u) => u.id === f.idUser)}
-                                            quantity={quantities.find((q) => q.identificator === f.quantity_id)}
-                                            address={f.address}
-                                            description={f.description}
-                                            expDate={f.expDate}
-                                            category={f.category}
-                                            status={f.status}
-                                            photoURL={f.photoURL}
-                                        />
-                                    )
-                                }
+                                if (props.filter === 'none') {
+                                    if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
+                                        //randeaza cu filtru 2
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
+                                    if (props.availableFilter === 'none') {
+                                        return (
+                                            <FoodCard
+                                                key={f.id}
+                                                user={users.find((u) => u.id === f.idUser)}
+                                                quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                                address={f.address}
+                                                description={f.description}
+                                                expDate={f.expDate}
+                                                category={f.category}
+                                                status={f.status}
+                                                photoURL={f.photoURL}
+                                            />
+                                        )
+                                    }
 
+                                }
                             }
                         })
                         : null

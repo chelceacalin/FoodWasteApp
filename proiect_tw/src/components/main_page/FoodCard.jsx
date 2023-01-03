@@ -11,18 +11,17 @@ const FoodCard = (p) => {
 
     const stabilesteExpirare = (date) => {
         let date1 = new Date();
-        let diffTime = date - date1;
-        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        if (diffDays >= 4) {
-            return 'textContentGreen';
-        }
-        if (diffDays >= 0) {
-            return 'textContentYellow';
-        }
-        if (diffDays < 1) {
+        //daca ziua de azi e mai mare ca cea a produsului atunci sigur e expirat
+        if (date1 >= date) {
             return 'textContentRed';
         }
-
+        //altfel inseamna ca data > data1 si luam care e diferenta 
+        let diffTime = date - date1;
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays < 4) {
+            return 'textContentYellow';
+        }
+        return 'textContentGreen'
     }
 
     return (
