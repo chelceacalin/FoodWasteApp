@@ -6,9 +6,16 @@ import LeftMenu from "./LeftMenu.jsx";
 import "./AuthDetails.css"
 import RightContent from "./RightContent.jsx";
 import "./FoodCard.css"
+import { FacebookShareButton, TwitterShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon } from "react-share";
+
+
+
 const FoodCard = (p) => {
     let statusList = ['reserved', 'available', 'sold']
 
+    let ProductId=p.idProdus
+    console.log(ProductId);
     const stabilesteExpirare = (date) => {
         let date1 = new Date();
         //daca ziua de azi e mai mare ca cea a produsului atunci sigur e expirat
@@ -24,6 +31,7 @@ const FoodCard = (p) => {
         return 'textContentGreen'
     }
 
+
     return (
         <div className="foodCard">
             <div className={`reservedStatus ${statusList[p.status]}`}>
@@ -37,6 +45,18 @@ const FoodCard = (p) => {
             <p className="textContent">Locatie: {p.address}</p>
             <p className="textContent">Telefon: {p.user.phone}</p>
             <button>Rezerva</button>
+
+            <FacebookShareButton
+        url={"http://localhost:3000/authenticated/"+ProductId}
+        quote={"Vizionati Produsul Meu"}
+        hashtag={"#hashtag"}
+        description={"aiueo"}
+        className="Demo__some-network__share-button"
+      >
+        <FacebookIcon size={32} round /> 
+      </FacebookShareButton>
+      <br />
+      
         </div>
     )
 }

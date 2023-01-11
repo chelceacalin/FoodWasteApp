@@ -38,6 +38,7 @@ const RightContent = (props) => {
                 {
                     (foods && users && quantities) ?
                         foods.map((f) => {
+
                             if (props.owningFilter === 'own' && f.idUser === auth.currentUser.uid) {
                                 console.log("da")
                                 if (props.filter !== 'none' && f.category === props.filter) {
@@ -54,6 +55,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     } if (props.availableFilter === 'none') {
@@ -69,6 +71,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
@@ -87,6 +90,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
@@ -102,6 +106,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
@@ -123,6 +128,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     } if (props.availableFilter === 'none') {
@@ -138,6 +144,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
@@ -156,6 +163,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
@@ -171,6 +179,7 @@ const RightContent = (props) => {
                                                 category={f.category}
                                                 status={f.status}
                                                 photoURL={f.photoURL}
+                                                idProdus={f.id}
                                             />
                                         )
                                     }
