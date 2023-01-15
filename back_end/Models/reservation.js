@@ -5,7 +5,8 @@ const Reservation = sequelize.define("reservations", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+         autoIncrement: true
     },
     receiverId: {
         type: DataTypes.STRING,
