@@ -63,8 +63,9 @@ const getProductsByID = async(req, res) => {
 
 //Update
 const updateProduct = async(req, res) => {
-    try {
-        let prod = await Product.update(req.body, { where: { id: req.params.id } });
+    try {       
+        let prod = await Product.update(req.body, { where: { id: req.params.id } });     
+
         res.status(200).send(prod);
     } catch (err) {
         res.status(500).send({ message: 'Eroare' });

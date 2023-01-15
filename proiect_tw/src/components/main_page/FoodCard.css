@@ -85,3 +85,8 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+.foodCard button.bookingButtonDisabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
