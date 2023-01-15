@@ -10,8 +10,8 @@ import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 import axios from "axios";
 import { Product, ProductStatus } from "../../models/product.js";
-
-
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 const FoodCard = (p) => {
     let statusList = ['reserved', 'available', 'sold']
 
@@ -42,12 +42,24 @@ const FoodCard = (p) => {
     }
 
     const setButtonStyle = (currentUserId, productUserId, productStatus) => {
-        if (currentUserId === productUserId || productStatus === 0 || productStatus === 2) {
-            console.log(currentUserId)
-            console.log(productUserId)
+        if (currentUserId === productUserId || productStatus === ProductStatus.RESERVED || productStatus === ProductStatus.SOLD) {
             return true;
         }
         return false;
+    }
+
+    const setButtonTooltipMessage = (currentUserId, productUserId, productStatus)=>{
+        if (currentUserId === productUserId ) {
+            return "You can't book your own products!"
+        }else if( productStatus === ProductStatus.RESERVED){
+            return "The product is already reserved!"
+        }
+        else if(productStatus === ProductStatus.SOLD){
+            return "The product is already sold!"
+        }
+        else{
+            return "Book this product"
+        }
     }
 
     return (
@@ -62,8 +74,11 @@ const FoodCard = (p) => {
             <p className={stabilesteExpirare(Date.parse(p.product.expDate))}>Expiration date: {p.product.expDate.substring(0, 10)}</p>
             <p className="textContent">Locatie: {p.product.address}</p>
             <p className="textContent">Telefon: {p.user.phone}</p>
-            <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Rezerva</button>
-
+            <Tippy content={setButtonTooltipMessage(auth.currentUser.uid, p.product.idUser, p.product.status)}>
+                <div>
+                <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Rezerva</button>        
+                </div>
+               </Tippy>
             <FacebookShareButton
                 url={"http://localhost:3000/authenticated/" + ProductId}
                 quote={"Vizionati Produsul Meu"}
