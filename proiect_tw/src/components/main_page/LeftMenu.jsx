@@ -23,7 +23,7 @@ const LeftMenu = (props) => {
     }
 
     useEffect(() => {
-        getNumeUser();
+        setTimeout(getNumeUser,1000);
     }, [])
 
 
