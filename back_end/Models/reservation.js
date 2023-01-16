@@ -6,9 +6,13 @@ const Reservation = sequelize.define("reservations", {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-         autoIncrement: true
+        autoIncrement: true
     },
-    receiverId: {
+    cineRezerva: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    deLaCine: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -18,7 +22,7 @@ const Reservation = sequelize.define("reservations", {
     },
     date: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     }
 })
 

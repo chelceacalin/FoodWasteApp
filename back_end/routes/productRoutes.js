@@ -9,4 +9,5 @@ router.delete('/', productController.deleteall);
 router.put('/:id', productController.updateProduct);
 router.get('/user/:id', productController.getProductsByID);
 
+
 module.exports = router;

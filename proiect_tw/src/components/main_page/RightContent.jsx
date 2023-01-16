@@ -37,12 +37,70 @@ const RightContent = (props) => {
             })
     }
 
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      }
+      
+    const myFiltered=()=>{
+        //IAU TOATE PRODUSELE PT USERUL MEU
+        axios.get('http://localhost:3030/api/products/')
+        .then((produs) => {
+            //setFoods(resp.data);
+            axios.get('http://localhost:3030/api/reservations/user/'+auth.currentUser.uid)
+            .then((rezervare) => {
+               console.log('Rezervarile mele:', rezervare.data)
+                 console.log(' PRODUSE:', produs.data)
+
+
+             let rezervari=rezervare.data;
+             let validId=auth.currentUser.uid;
+             let arrDeLaCine=[];
+             for (let i of rezervari){
+                if(i.cineRezerva===validId){
+                    arrDeLaCine.push(i.deLaCine);
+                }
+             }
+//ACUM  AVEM TOATE ID-URILE UNICE pentru care trebuie sa luam produsele
+            let unique = arrDeLaCine.filter(onlyUnique);
+           console.log("unique: "+unique);
+            
+            let produse=produs.data;
+            let ArrayObjects=[];
+             for (let j of produse){
+                if((unique.includes(j.idUser))&&unique.length>0&&j.idUser!==validId){
+                    //console.log(j);
+                    ArrayObjects.push(j);
+                }
+             }
+
+           console.log(ArrayObjects);
+            setFoods(ArrayObjects);
+        
+
+            }).catch((err)=>console.log(err));
+        }).catch((err)=>{console.log(err)})
+      
+        //console.log(array);
+    }
+
     return (
         <div className="rightContent">
             <div className="rightContentMenu">
-                <button onClick={() => { props.setOwningFilter('none') }} style={{ backgroundColor: props.owningFilter === 'none' ? '#bff7ab' : '#ffffff' }}>Toate produsele</button>
-                <button onClick={() => { props.setOwningFilter('own') }} style={{ backgroundColor: props.owningFilter === 'own' ? '#bff7ab' : '#ffffff' }}>Produsele mele</button>
-                <button> Produsele mele rezervate</button>
+                <button onClick={() => { 
+                    stateModified();
+                    
+                    props.setOwningFilter('none') }
+                
+                } style={{ backgroundColor: props.owningFilter === 'none' ? '#bff7ab' : '#ffffff' }} 
+                
+                >Toate produsele</button>
+                <button onClick={() => { props.setOwningFilter('own') 
+            stateModified()}} style={{ backgroundColor: props.owningFilter === 'own' ? '#bff7ab' : '#ffffff' }}>Produsele mele</button>
+                <button onClick={() => {
+                   myFiltered();
+                     props.setOwningFilter('own_reserved') }} 
+                     style={{ backgroundColor: props.owningFilter === 'own_reserved' ? '#bff7ab' : '#ffffff' }}
+                 > Produsele mele rezervate</button>
             </div>
             <div className="rightContentInfo">
                 {
@@ -50,10 +108,26 @@ const RightContent = (props) => {
                         foods.map((f) => {
 
                             let product = new Product;
-                            product = {...f};
+                            product = { ...f };
+                           // console.log(product);
+                          //  console.log(f);
+                            if (props.owningFilter === 'own_reserved') {
+                                return (
+                                    <FoodCard
+                                    stateModified={ myFiltered}
+                                    product={f}
+                                    key={f.id}
+                                    user={users.find((u) => u.id === f.idUser)}
+                                    quantity={quantities.find((q) => q.identificator === f.quantity_id)}
+                                />
+                                )
+                            }
+                            else
+                            
+                            if ((props.owningFilter === 'own') && f.idUser === auth.currentUser.uid) {
+                                   // console.log('apasat 1');
+                              
 
-                            if (props.owningFilter === 'own' && f.idUser === auth.currentUser.uid) {
-                                console.log("da")
                                 if (props.filter !== 'none' && f.category === props.filter) {
                                     if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
                                         //randeaza cu filtru 1 si 2
@@ -79,6 +153,7 @@ const RightContent = (props) => {
                                         )
                                     }
                                 }
+
                                 if (props.filter === 'none') {
                                     if (props.availableFilter !== 'none' && f.status == statusList.indexOf(props.availableFilter)) {
                                         //randeaza cu filtru 2

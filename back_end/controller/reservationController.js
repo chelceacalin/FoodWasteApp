@@ -40,6 +40,23 @@ const getSingleReservation = async(req, res) => {
     }
 }
 
+
+//Get single
+
+const getReservationsByID = async(req, res) => {
+    try {
+        let reservation = await Reservation.findAll({
+            where: {
+                cineRezerva: req.params.id
+            }
+        })
+        res.status(200).send(reservation);
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+}
+
+
 //Update
 const updateReservation = async(req, res) => {
     try {
@@ -78,5 +95,6 @@ module.exports = {
     getSingleReservation,
     deleteReservationById,
     deleteallReservations,
-    updateReservation
+    updateReservation,
+    getReservationsByID
 };

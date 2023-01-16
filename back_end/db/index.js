@@ -7,6 +7,8 @@ const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
     dialect: config.dialect
 });
 
+
+
 sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(() => {
     sequelize.authenticate().then((res) => {
 
@@ -18,6 +20,7 @@ sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(() => {
         console.log("Error" + err);
     })
 });
+
 
 
 

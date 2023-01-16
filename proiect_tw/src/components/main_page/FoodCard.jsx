@@ -16,7 +16,6 @@ const FoodCard = (p) => {
     let statusList = ['reserved', 'available', 'sold']
 
     let ProductId = p.product.id
-    console.log(ProductId);
     const stabilesteExpirare = (date) => {
         let currentDate = new Date();
         //daca ziua de azi e mai mare ca cea a produsului atunci sigur e expirat
@@ -33,12 +32,30 @@ const FoodCard = (p) => {
     }
 
     const rezervaProdus = (prop) => {
+
+        try{
         console.log(prop)
         let newProduct = prop.product;
         newProduct.status = 0;
         axios.put("http://localhost:3030/api/products/" + newProduct.id, newProduct).then(() => {
             prop.stateModified();
         })
+
+
+        let obj={
+            cineRezerva:auth.currentUser.uid,
+            deLaCine:newProduct.idUser,
+            productId:newProduct.id
+        }
+
+        axios.post("http://localhost:3030/api/reservations/", obj).then(() => {
+        }).catch(err=>{console.log(err)});
+        console.log("ID PRODUS:" +newProduct.id,newProduct.idUser);
+    }
+    catch(err){
+        console.log(err);
+    }
+
     }
 
     const setButtonStyle = (currentUserId, productUserId, productStatus) => {
