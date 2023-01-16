@@ -5,11 +5,9 @@
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "16932928"
     },
-    "item": [
-        {
+    "item": [{
             "name": "Product_Routes",
-            "item": [
-                {
+            "item": [{
                     "name": "AddProduct",
                     "request": {
                         "method": "POST",
@@ -158,7 +156,7 @@
                     "response": []
                 },
                 {
-                    "name": "GetProductByID Copy",
+                    "name": "GetProductByUserID",
                     "protocolProfileBehavior": {
                         "disableBodyPruning": true
                     },
@@ -194,8 +192,7 @@
         },
         {
             "name": "User_Routes",
-            "item": [
-                {
+            "item": [{
                     "name": "AddUser",
                     "request": {
                         "method": "POST",
@@ -347,15 +344,17 @@
         },
         {
             "name": "Reservation_Routes",
-            "item": [
-                {
+            "item": [{
                     "name": "Add Reservation",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
                     "request": {
-                        "method": "POST",
+                        "method": "GET",
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"id\":1,\r\n    \"receiverId\":\"idreceived\",\r\n    \"productId\":1,\r\n    \"date\":\"2022-10-10\"\r\n}",
+                            "raw": "{\r\n    \"receiverId\":\"AiU8o05fqEUckbcl3pbTuM6i4P82\",\r\n    \"productId\":1\r\n  \r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -363,7 +362,7 @@
                             }
                         },
                         "url": {
-                            "raw": "localhost:3030/api/reservations/",
+                            "raw": "localhost:3030/api/reservations/2",
                             "host": [
                                 "localhost"
                             ],
@@ -371,7 +370,7 @@
                             "path": [
                                 "api",
                                 "reservations",
-                                ""
+                                "2"
                             ]
                         }
                     },
@@ -497,13 +496,45 @@
                         }
                     },
                     "response": []
+                },
+                {
+                    "name": "GetReservationByUserID Copy",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"id\":1,\r\n    \"idUser\":1,\r\n    \"address\":\"Closca Nr 2\",\r\n    \"photoURL\":\"empty\",\r\n    \"description\":\"empty\",\r\n    \"forTrade\":false,\r\n    \"expDate\":null,\r\n    \"status\":1,\r\n    \"category\":\"mere\",\r\n    \"quantityId\":1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "localhost:3030/api/reservations/user/0qMl9vOEmHZxrWRp2xCf7vzSLvv1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3030",
+                            "path": [
+                                "api",
+                                "reservations",
+                                "user",
+                                "0qMl9vOEmHZxrWRp2xCf7vzSLvv1"
+                            ]
+                        }
+                    },
+                    "response": []
                 }
             ]
         },
         {
             "name": "Quantity_Routes",
-            "item": [
-                {
+            "item": [{
                     "name": "Add Quantity",
                     "request": {
                         "method": "POST",
@@ -657,8 +688,7 @@
         },
         {
             "name": "newUserSub",
-            "item": [
-                {
+            "item": [{
                     "name": "Add New User Sub",
                     "request": {
                         "method": "POST",
