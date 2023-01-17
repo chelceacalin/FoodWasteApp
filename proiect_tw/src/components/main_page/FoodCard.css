@@ -90,3 +90,12 @@
     pointer-events: none;
     opacity: 0.5;
 }
+
+.foodCard .sellingContent {
+    margin-top: 0.5em;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: small;
+}

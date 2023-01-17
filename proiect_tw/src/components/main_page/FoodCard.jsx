@@ -33,29 +33,41 @@ const FoodCard = (p) => {
 
     const rezervaProdus = (prop) => {
 
-        try{
-        console.log(prop)
-        let newProduct = prop.product;
-        newProduct.status = 0;
-        axios.put("http://localhost:3030/api/products/" + newProduct.id, newProduct).then(() => {
-            prop.stateModified();
-        })
+        try {
+            console.log(prop)
+            let newProduct = prop.product;
+            newProduct.status = 0;
+            axios.put("http://localhost:3030/api/products/" + newProduct.id, newProduct).then(() => {
+                prop.stateModified();
+            })
 
 
-        let obj={
-            cineRezerva:auth.currentUser.uid,
-            deLaCine:newProduct.idUser,
-            productId:newProduct.id
+            let obj = {
+                cineRezerva: auth.currentUser.uid,
+                deLaCine: newProduct.idUser,
+                productId: newProduct.id
+            }
+
+            axios.post("http://localhost:3030/api/reservations/", obj).then(() => {
+            }).catch(err => { console.log(err) });
+            console.log("ID PRODUS:" + newProduct.id, newProduct.idUser);
+        }
+        catch (err) {
+            console.log(err);
         }
 
-        axios.post("http://localhost:3030/api/reservations/", obj).then(() => {
-        }).catch(err=>{console.log(err)});
-        console.log("ID PRODUS:" +newProduct.id,newProduct.idUser);
-    }
-    catch(err){
-        console.log(err);
     }
 
+    const vindeProdus = (e) => {
+        let newProduct = p.product;
+        if (e.target.checked) {
+            newProduct.status = ProductStatus.SOLD;
+        } else {
+            newProduct.status = ProductStatus.RESERVED;
+        }
+        axios.put("http://localhost:3030/api/products/" + newProduct.id, newProduct).then(() => {
+            p.stateModified();
+        })
     }
 
     const setButtonStyle = (currentUserId, productUserId, productStatus) => {
@@ -65,16 +77,16 @@ const FoodCard = (p) => {
         return false;
     }
 
-    const setButtonTooltipMessage = (currentUserId, productUserId, productStatus)=>{
-        if (currentUserId === productUserId ) {
+    const setButtonTooltipMessage = (currentUserId, productUserId, productStatus) => {
+        if (currentUserId === productUserId) {
             return "You can't book your own products!"
-        }else if( productStatus === ProductStatus.RESERVED){
+        } else if (productStatus === ProductStatus.RESERVED) {
             return "The product is already reserved!"
         }
-        else if(productStatus === ProductStatus.SOLD){
+        else if (productStatus === ProductStatus.SOLD) {
             return "The product is already sold!"
         }
-        else{
+        else {
             return "Book this product"
         }
     }
@@ -82,7 +94,7 @@ const FoodCard = (p) => {
     return (
         <div className="foodCard">
             <div className={`reservedStatus ${statusList[p.product.status]}`}>
-                {p.product.category}
+                {p.product.category + ' - ' + statusList[p.product.status][0].toUpperCase() + statusList[p.product.status].substring(1)}
             </div>
             <img src={p.product.photoURL !== 'Empty' ? p.product.photoURL : 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg'} />
             <p>{p.product.description}</p>
@@ -91,11 +103,19 @@ const FoodCard = (p) => {
             <p className={stabilesteExpirare(Date.parse(p.product.expDate))}>Expiration date: {p.product.expDate.substring(0, 10)}</p>
             <p className="textContent">Locatie: {p.product.address}</p>
             <p className="textContent">Telefon: {p.user.phone}</p>
+            <div className="sellingContent" style={{
+                visibility: (p.product.status === ProductStatus.RESERVED ||
+                    p.product.status === ProductStatus.SOLD)
+                    && auth.currentUser.uid === p.product.idUser ? 'visible' : 'hidden'
+            }}>
+                <label>Rezervare onorata?</label>
+                <input type={'checkbox'} onChange={(e) => { vindeProdus(e) }} checked={p.product.status == ProductStatus.SOLD ? true : false}></input>
+            </div>
             <Tippy content={setButtonTooltipMessage(auth.currentUser.uid, p.product.idUser, p.product.status)}>
                 <div>
-                <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Rezerva</button>        
+                    <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Rezerva</button>
                 </div>
-               </Tippy>
+            </Tippy>
             <FacebookShareButton
                 url={"http://localhost:3000/authenticated/" + ProductId}
                 quote={"Vizionati Produsul Meu"}
