@@ -41,7 +41,7 @@ const AddProduct = () => {
           <input
             type="text"
             placeholder="Product Description"
-            value={productDescription !== null ? productDescription : "Adauga Produs"}
+            value={productDescription !== null ? productDescription : "Add Product"}
             onChange={(e) => setproductDescription(e.target.value)}
           ></input>
           <label>Description</label>
@@ -72,9 +72,9 @@ const AddProduct = () => {
           <label style={{ color: "#54b3d6" }}>Is Product Tradable</label>
           <br></br><br></br>
           <select name="Categorie" id="comboA" onChange={(e) => { setCategorie(e.target.value) }}>
-            <option value="Carne" >Carne</option>
-            <option value="Fructe">Fructe</option>
-            <option value="Legume">Legume</option>
+            <option value="Meat" >Meat</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
           </select>
         </div>
         <br></br>
@@ -88,7 +88,7 @@ const AddProduct = () => {
           //value={password}
           //onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <label>Cantitate</label>
+          <label>Quantity</label>
         </div>
 
 

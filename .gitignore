@@ -131,3 +131,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 back_end/db/config.js
+front_end/public/logo192.png
+front_end/public/logo512.png
+front_end/package-lock.json
+front_end/package.json
+front_end/public/favicon.ico
+front_end/README.md
+front_end/public/manifest.json
+front_end/public/robots.txt

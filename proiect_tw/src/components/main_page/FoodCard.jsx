@@ -98,22 +98,22 @@ const FoodCard = (p) => {
             </div>
             <img src={p.product.photoURL !== 'Empty' ? p.product.photoURL : 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg'} />
             <p>{p.product.description}</p>
-            <p className="textContent">Donator: {p.user.username}</p>
-            <p className="textContent">Cantitate: {p.quantity.units}, {p.quantity.type}</p>
+            <p className="textContent">Donor: {p.user.username}</p>
+            <p className="textContent">Quantity: {p.quantity.units}, {p.quantity.type}</p>
             <p className={stabilesteExpirare(Date.parse(p.product.expDate))}>Expiration date: {p.product.expDate.substring(0, 10)}</p>
-            <p className="textContent">Locatie: {p.product.address}</p>
-            <p className="textContent">Telefon: {p.user.phone}</p>
+            <p className="textContent">Location: {p.product.address}</p>
+            <p className="textContent"> Phone:    {p.user.phone}</p>
             <div className="sellingContent" style={{
                 visibility: (p.product.status === ProductStatus.RESERVED ||
                     p.product.status === ProductStatus.SOLD)
                     && auth.currentUser.uid === p.product.idUser ? 'visible' : 'hidden'
             }}>
-                <label>Rezervare onorata?</label>
+                <label>Reservation complete?</label>
                 <input type={'checkbox'} onChange={(e) => { vindeProdus(e) }} checked={p.product.status == ProductStatus.SOLD ? true : false}></input>
             </div>
             <Tippy content={setButtonTooltipMessage(auth.currentUser.uid, p.product.idUser, p.product.status)}>
                 <div>
-                    <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Rezerva</button>
+                    <button className={setButtonStyle(auth.currentUser.uid, p.product.idUser, p.product.status) ? 'bookingButtonDisabled' : ''} onClick={() => rezervaProdus(p)}>Reserve</button>
                 </div>
             </Tippy>
             <FacebookShareButton

@@ -97,17 +97,17 @@ const RightContent = (props) => {
 
                 } style={{ backgroundColor: props.owningFilter === 'none' ? '#bff7ab' : '#ffffff' }}
 
-                >Toate produsele</button>
+                >All Products</button>
                 <button onClick={() => {
                     props.setOwningFilter('own')
                     stateModified()
-                }} style={{ backgroundColor: props.owningFilter === 'own' ? '#bff7ab' : '#ffffff' }}>Produsele mele</button>
+                }} style={{ backgroundColor: props.owningFilter === 'own' ? '#bff7ab' : '#ffffff' }}>My Products</button>
                 <button onClick={() => {
                     myFiltered();
                     props.setOwningFilter('own_reserved')
                 }}
                     style={{ backgroundColor: props.owningFilter === 'own_reserved' ? '#bff7ab' : '#ffffff' }}
-                > Produsele mele rezervate</button>
+                > My Reserved Products</button>
             </div>
             <div className="rightContentInfo">
                 {
