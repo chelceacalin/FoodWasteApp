@@ -1,6 +1,9 @@
 # FoodWasteApp
   It's an web application aimed at reducing the food waste around the world by giving it's user the posibility to donate/reserve items that people don't need.
-   ![IntefacePhot1](https://firebasestorage.googleapis.com/v0/b/proiecttw-84ef3.appspot.com/o/FoodPics%2Fd02c851a-a5ea-4bd2-9982-dc34f290842f_IntefacePhot1.JPG?alt=media&token=a1192f6c-623f-4dcf-8faa-c458d516e1f2)
+  
+  
+  
+  ![IntefacePhot1](https://firebasestorage.googleapis.com/v0/b/proiecttw-84ef3.appspot.com/o/FoodPics%2Fd02c851a-a5ea-4bd2-9982-dc34f290842f_IntefacePhot1.JPG?alt=media&token=a1192f6c-623f-4dcf-8faa-c458d516e1f2)
   
   Functionalities:
   <pre>
