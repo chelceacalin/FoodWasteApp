@@ -16,6 +16,5 @@
      
 
   </pre>
-
-        ![IntefacePhot1](FoodWasteApp\Media\IntefacePhot1.JPG)
+    ![IntefacePhot1](./Media/IntefacePhot1.JPG)
 
