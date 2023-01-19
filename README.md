@@ -17,5 +17,5 @@
 
   </pre>
 
-        ![PozaGithub](https://user-images.githubusercontent.com/76866499/213398315-0b8fda56-c168-4a08-9a51-65658e06b362.JPG)
+        ![IntefacePhot1](FoodWasteApp\Media\IntefacePhot1.JPG)
 

@@ -12,7 +12,7 @@ const AddProduct = () => {
   const [isTradable, set_isTradable] = useState(true);
   const [contor, setContor] = useState(1);
   const [startDate, setStartDate] = useState(new Date());
-  const [categorie, setCategorie] = useState("Carne");
+  const [categorie, setCategorie] = useState("Meat");
   const [cantitate, setCantitate] = useState(0);
   const [unitsOfMeasure, setunitsOfMeasure] = useState("Kilogram");
   const [foodPhoto, setFoodPhoto] = useState(null);
