@@ -1,5 +1,5 @@
 # FoodWasteApp
-  It's an web application aimed at reducing the food waste around the world by giving it's user the posibility to donate/reserve items that people don't need.
+  This is a web application with a noble mission to combat food waste globally. Its primary goal is to empower users to donate or reserve surplus food items that would otherwise go to waste. With advanced filtering options, users can easily find items that align with their preferences and dietary needs. The platform also provides real-time updates on the availability of food items and alerts users when they are about to expire. Additionally, users can manage their account information, including their profile picture and phone number, for an optimized experience.
   
   Technologies Used:
   React, Javascript, Node JS w/ Express and Sequelize
