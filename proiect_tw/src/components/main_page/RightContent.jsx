@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react"
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import auth from '../../firebase.js'
-import { useNavigate } from 'react-router-dom';
-import './RightContent.css'
-import FoodCard from "./FoodCard.jsx";
 import axios from 'axios';
+import { useEffect, useState } from "react";
+import auth from '../../firebase.js';
 import { Product, ProductStatus } from "../../models/product.js";
+import FoodCard from "./FoodCard.jsx";
+import './RightContent.css';
 const RightContent = (props) => {
     let statusList = ['reserved', 'available', 'sold']
     const [foods, setFoods] = useState(null);
@@ -55,11 +53,11 @@ const RightContent = (props) => {
                         let rezervari = rezervare.data;
                         let validId = auth.currentUser.uid;
                         let arrDeLaCine = [];
-                        for (let i of rezervari) {
-                            if (i.cineRezerva === validId) {
-                                arrDeLaCine.push(i.deLaCine);
+                        rezervari.forEach(r=>{
+                            if(r.cineRezerva === validId){
+                                arrDeLaCine.push(r.cineRezerva);
                             }
-                        }
+                        })
                         //ACUM  AVEM TOATE ID-URILE UNICE pentru care trebuie sa luam produsele
                         let unique = arrDeLaCine.filter(onlyUnique);
                         console.log("unique: " + unique);
@@ -75,15 +73,9 @@ const RightContent = (props) => {
 
                             }
                         }
-
-                        console.log(ArrayObjects);
                         setFoods(ArrayObjects);
-
-
                     }).catch((err) => console.log(err));
             }).catch((err) => { console.log(err) })
-
-        //console.log(array);
     }
 
     return (

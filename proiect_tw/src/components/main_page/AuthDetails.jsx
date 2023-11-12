@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import auth from '../../firebase.js'
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.js';
+import "./AuthDetails.css";
 import LeftMenu from "./LeftMenu.jsx";
-import "./AuthDetails.css"
 import RightContent from "./RightContent.jsx";
 
 

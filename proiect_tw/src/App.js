@@ -14,11 +14,7 @@ function App() {
       <header className="App-header">
         <Router>
           <Routes>
-            <Route exact path="/signUp" element={
-              <>
-                {<SignUp />}
-              </>
-            }>
+            <Route exact path="/signUp" element={ <SignUp /> }>
             </Route>
             <Route exact path='/forgotPassword' element={<ForgotPassword />}></Route>
             <Route exact path='/authenticated' element={<AuthDetails />}></Route>
@@ -27,7 +23,6 @@ function App() {
             <Route path='/' element={<SignIn />}>Index route</Route>
           </Routes>
         </Router>
-
       </header>
     </div>
   );

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react"
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import auth from '../../firebase.js'
+import axios from "axios";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import "./LeftMenu.css"
-import axios, { all } from "axios";
-import storage from '../../firebaseStorage.js'
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
-import { v4 } from 'uuid'
+import { v4 } from 'uuid';
+import auth, { storage } from '../../firebase.js';
+import "./LeftMenu.css";
 const LeftMenu = (props) => {
     const navigate = useNavigate();
     //console.log("Ce"+auth.currentUser.uid);
@@ -16,11 +14,9 @@ const LeftMenu = (props) => {
     let [dataForUpdate, setDateForUpdate] = useState({});
     const getNumeUser = async () => {
         const dataFromAxios = await axios.get('http://localhost:3030/api/users/' + auth.currentUser.uid);
-        //console.log(dataFromAxios.data.username.split(" ")[0]);
         setNumeUtilizator(dataFromAxios.data.username.split(" ")[0]);
         setDateForUpdate(dataFromAxios.data);
         setTimeout(setCurrentProfilePic(dataFromAxios.data.photoUrl),3000);
-     
     }
 
     useEffect(() => {

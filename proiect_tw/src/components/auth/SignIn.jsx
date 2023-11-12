@@ -1,18 +1,14 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebase.js";
-import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "@react-oauth/google";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import jwt_decode from "jwt-decode";
 import axios from "axios";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import auth from "../../firebase.js";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const provider = new GoogleAuthProvider();
-
 
 
 let signInWithGoogleAPP=()=>{
@@ -35,10 +31,8 @@ let signInWithGoogleAPP=()=>{
        axios
               .get(urlToCheckIfExistsAlready, {})
               .then((data) => {
-               // console.log(data.data);
                 if (data.data.id > 0) {
                   exists = 1;
-                  //console.log("Exists already: " + exists);
                 } else {
                   exists = 0;
                   if (exists === 0) {
@@ -76,8 +70,6 @@ let signInWithGoogleAPP=()=>{
               .catch((err) => {
                 console.log("Didn't Find: " + err);
               });
-
-   // console.log(auth.currentUser.uid);
     navigate("../authenticated", { replace: true });
     }).catch((error) => {
     console.log("Err:" +error);

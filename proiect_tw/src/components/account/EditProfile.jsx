@@ -1,20 +1,15 @@
-import React from 'react'
-import auth from '../../firebase.js'
-import axios, { AxiosError } from "axios"
+import axios from "axios";
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from 'react';
-import "./EditProfile.css"
+import "./EditProfile.css";
 function EditProfile() {
     const navigate = useNavigate();
-
-    let [dateUtilizator, setDateUtilizator] = useState('')
+    const [dateUtilizator, setDateUtilizator] = useState('')
     const { state } = useLocation();
     const userNameEdited = useRef();
     const addressEdited = useRef();
     const phoneEdited = useRef();
-
     const [infoState, setInfoState] = useState('Edit Profile');
-
 
     const getDateUtilizator = async () => {
         const dataFromAxios = await axios.get('http://localhost:3030/api/users/' + state);
@@ -23,16 +18,9 @@ function EditProfile() {
 
     }
 
-
     useEffect(() => {
         getDateUtilizator();
     }, [])
-
-
-
-
-
-
 
     let submitAll = () => {
         // Updatam Profilul Utilizatorului
@@ -53,7 +41,6 @@ function EditProfile() {
 
         axios.put(linkUpdate, copieDateUtilizator).catch(err => { console.log(err) });
 
-
         // Updatam Adresele Produselor Pentru User
         let linkPrimireProduse = 'http://localhost:3030/api/products/user/' + dateUtilizator.id;
 
@@ -73,10 +60,8 @@ function EditProfile() {
 
             })
 
-        // alert('Changes Saved')
         setInfoState("Changes saved!")
         setTimeout(() => { navigate("../authenticated", { replace: true }); }, 1000)
-        // setTimeout(function () { alert('hello world'); }, 1);
     }
 
     return (

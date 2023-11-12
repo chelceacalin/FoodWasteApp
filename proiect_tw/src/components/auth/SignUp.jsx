@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebase.js";
-import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import auth from "../../firebase.js";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -35,9 +35,6 @@ const SignUp = () => {
 
   }
 
-
-
-
   const signUp = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
@@ -57,7 +54,6 @@ const SignUp = () => {
         if (password.length < 6) {
           alert("Password Length must be at least 6 characters");
         }
-
         console.log(error);
       });
   };

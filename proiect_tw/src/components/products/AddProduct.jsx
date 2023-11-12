@@ -1,12 +1,13 @@
-import { useState } from "react";
 import axios from "axios";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import auth from "../../firebase.js";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4, v4 } from 'uuid';
-import { navigate, useNavigate } from "react-router-dom";
-import storage from '../../firebaseStorage.js'
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import auth from "../../firebase.js";
+import { storage } from "../../firebase.js";
+
 const AddProduct = () => {
   const [productDescription, setproductDescription] = useState("");
   const [isTradable, set_isTradable] = useState(true);
